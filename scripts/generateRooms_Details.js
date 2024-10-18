@@ -126,10 +126,9 @@ function displayRoomDetails(room) {
     reservationButton.style.borderRadius = '5px';
     reservationButton.style.cursor = 'pointer';
 
-    reservationButton.addEventListener('click', () => {
-        alert('Réservation de la chambre: ' + room.nom);
-    });
-
+    // reservationButton.addEventListener('click', (event) => {
+    //     makeFormBook(room.id); 
+    // });
     infoSection.appendChild(reservationButton);
 
     // Ajouter la description et les infos dans le div de détails
