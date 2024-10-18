@@ -1,6 +1,6 @@
 
 
-function makeFormBook() {
+function makeFormBook(room) {
 
     // Creating and styling Title :
 
@@ -131,8 +131,8 @@ function makeFormBook() {
     // Creating the divs for Spaces and Formula :
 
     let divThirdRow = document.createElement("div");
+    divThirdRow.className = "row segment strong";
     formReserve.appendChild(divThirdRow);
-    divThirdRow.setAttribute("class", "row segment strong");
 
         // Div for Space :
 
@@ -141,29 +141,27 @@ function makeFormBook() {
     divSpace.setAttribute("class", "col display ")
 
     let labelSpace = document.createElement("label");
-    divSpace.appendChild(labelSpace);
     labelSpace.innerText = "Choisissez votre espace* :";
     labelSpace.setAttribute("for", "space");
+    divSpace.appendChild(labelSpace);
 
     let selectSpace = document.createElement("select");
+    selectSpace.name = "espace";
+    selectSpace.id = "space";
+    selectSpace.required = true;
     divSpace.appendChild(selectSpace);
-    selectSpace.setAttribute("name", "espace");
-    selectSpace.setAttribute("id", "space");
-    selectSpace.setAttribute("required", "");
 
-    let optionSpace = [];
+    let optionSpace0 = document.createElement("option");
+    optionSpace0.innerText = "Chambre double - La Sérénité du Mont";
+    selectSpace.appendChild(optionSpace0);
 
-    optionSpace.push(document.createElement("option"));
-    selectSpace.appendChild(optionSpace[0]);
-    optionSpace[0].innerText = "Chambre double - La Sérénité du Mont";
-
-    optionSpace.push(document.createElement("option"));
-    selectSpace.appendChild(optionSpace[1]);
-    optionSpace[1].innerText = "Chambre familiale - L'Abri des Aigles";
-
-    optionSpace.push(document.createElement("option"));
-    selectSpace.appendChild(optionSpace[2]);
-    optionSpace[2].innerText = "Appartement - Les Horizons Sauvages";
+    let optionSpace1 = document.createElement("option");
+    optionSpace1.innerText = "Chambre familiale - L'Abri des Aigles";
+    selectSpace.appendChild(optionSpace1);
+    
+    let optionSpace2 = document.createElement("option");
+    optionSpace2.innerText = "Appartement - Les Horizons Sauvages";
+    selectSpace.appendChild(optionSpace2);
         
         // Div for Formula :
 
@@ -177,29 +175,21 @@ function makeFormBook() {
     labelFormula.setAttribute("for", "choice");
 
     let selectFormula = document.createElement("select");
-    divFormula.appendChild(selectFormula);
     selectFormula.setAttribute("name", "choix");
-    selectFormula.setAttribute("id", "choice");
+    selectFormula.id = "choice";
+    divFormula.appendChild(selectFormula);
 
-    let optionFormula = [];
+    let optionFormula0 = document.createElement("option");
+    optionFormula0.innerText = "Week-end d'amour";
+    selectFormula.appendChild(optionFormula0);
 
-    optionFormula.push( document.createElement("option"));
-    selectFormula.appendChild(optionFormula[0]);
-    optionFormula[0].innerText = "Week-end d'amour";
-
-    optionFormula.push( document.createElement("option"));
-    selectFormula.appendChild(optionFormula[1]);
-    optionFormula[1].innerText = "Nature et découverte";
-
-    optionFormula.push( document.createElement("option"));
-    selectFormula.appendChild(optionFormula[2]);
-    optionFormula[2].innerText = "Travail saisonnier"; 
-
-
-    // for (let i = 0; i < optionFormula.length; i++) {
-    //     optionFormula[selectedFormula].selected = (i===selectFormula) ? true : false;
-    // }
-    // console.log(optionFormula[selectedFormula].selected);
+    let optionFormula1 = document.createElement("option");
+    optionFormula1.innerText = "Nature et découverte";
+    selectFormula.appendChild(optionFormula1);
+    
+    let optionFormula2 = document.createElement("option");
+    optionFormula2.innerText = "Travail saisonnier";
+    selectFormula.appendChild(optionFormula2);
 
 
     ///////////////////////////////////////////////////////
@@ -292,14 +282,14 @@ function makeFormBook() {
     // Creating the div for Button :
 
     let divButton = document.createElement("div");
+    divButton.className = "reserve";
     formReserve.appendChild(divButton);
-    divButton.setAttribute("class", "reserve");
 
     let inputButton = document.createElement("input");
+    inputButton.type = "submit";
+    inputButton.id = "reserve";
+    inputButton.value = "Réserver";
     divButton.appendChild(inputButton);
-    inputButton.setAttribute("type", "submit");
-    inputButton.setAttribute("id", "reserve");
-    inputButton.setAttribute("value", "Réserver");
 
 
     ///////////////////////////////////////////////////////
@@ -374,7 +364,7 @@ function makeFormBook() {
 
 
     selectFormula.addEventListener("input", function () {
-        if (selectFormula.options[2].selected === true) {
+        if (optionFormula2.selected === true) {
             
             inputStart.addEventListener("input", function() {
 
@@ -394,48 +384,53 @@ function makeFormBook() {
     ///////////////////////////////////////////////////////
 
 
+    ///////////////////////////////////////////////////////
+
+
+    
+
+    ///////////////////////////////////////////////////////
+
+
     // Imposing "Week-end d'amour" formula for the double bedroom :
 
 
-    // if (selectFormula.options[0].selected === true) {
-    //     optionSpace[1].setAttribute("disabled", "disabled");
-    //     optionSpace[2].setAttribute("disabled", "disabled");
-    // } 
 
 
-    // selectFormula.addEventListener("input", function () {
-    //     if (selectFormula.options[0].selected === true) {
-    //         console.log("yes");
+    let check = 0;
+    if (optionFormula0.selected === true && room === 0) {
 
-    //         selectSpace.options[1].setAttribute("disabled", "disabled");
-    //         selectSpace.options[2].setAttribute("disabled", "disabled");
+        if (check === 0) {
+            optionSpace1.style.display = "none";
+            optionSpace2.style.display = "none";
+            check += 1;
+        } else {
+            optionSpace1.style.display = "block";
+            optionSpace2.style.display = "block";
+        }
+    }
+    if (room !== 0) {
+        optionFormula1.selected = true;
+    
 
-    //     }
-
-    // });
-
-
-    ///////////////////////////////////////////////////////
-
-
-    // Pre-fill the form :
-
-        // Space :
-
-    let selectedSpace = 1;
-    optionSpace[selectedSpace].setAttribute("selected", "selected");
-    console.log(optionSpace[selectedSpace].selected);
-
-        // Formula :
-
-    let selectedFormula = 1;
-    optionFormula[selectedFormula].setAttribute("selected", "selected");
-    console.log(optionFormula[selectedFormula].selected);
-
-
-    ///////////////////////////////////////////////////////
-
-
+    } else {
+        optionFormula1.selected = false;
+    }
+    selectFormula.addEventListener("input", function() {
+        if (optionFormula0.selected === true) {
+            optionSpace1.style.display = "none";
+            optionSpace2.style.display = "none";
+            optionSpace0.selected = true;
+        } else {
+            optionSpace1.style.display = "block";
+            optionSpace2.style.display = "block";
+        }
+    });
 }
 
-makeFormBook();
+// const rooms = [0, 1, 2];
+// makeFormBook(rooms[1]);
+// // makeFormBook(rooms[0]);
+
+
+// Mettre les valeurs du formulaire dans un tableau associatif, et ce tableau associatif dans un tableau indexé pour avoir des paires clé-valeur
