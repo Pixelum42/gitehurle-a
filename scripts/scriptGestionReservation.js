@@ -25,16 +25,22 @@ divResaList.appendChild(divRow);
 
 
 let chambre = "chambre double";
-let date2 = "24.09.27";
+let date2;
 let date1 = () => {
     const a = Math.round(Math.random() + 2024);
     const m = Math.ceil(Math.random() * 12).toString().padStart(2, 0);
     const d = Math.ceil(Math.random() * 31).toString().padStart(2, 0);
+    if (m < 12) {
+        let x = (parseInt(d) + 1).toString().padStart(2,0);
+        // console.log(x);
+    
+        date2 = `${a}-${m}-${x}`;
 
-    if (m < 10)
-        date2 = `${a}-${m}-${d + 1}`;
+    }
     return (`${a}-${m}-${d}`);
 };
+
+
 let formule = "-10%";
 let messageFac = "Les gens, n'est-ce pas ?";
 
@@ -67,8 +73,7 @@ let reservations = [
     // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
     // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac }
 ];
-
-
+// console.log(date2);
 let divResa = [];
 
 let dateQILDDLDDLR = [];
@@ -286,9 +291,15 @@ inputGroupText.className = "input-group-text text-center";
 inputGroupText.textContent = 'Calendrier des réservations';
 divInputGroup.appendChild(inputGroupText);
 
+let trYear = document.createElement('div');
+trYear.innerText = year;
+divInputGroup.appendChild(trYear)
+
 let trMonth = document.createElement('span');
 trMonth.className = "d-flex input-group justify-content-between";
 divInputGroup.appendChild(trMonth);
+
+
 
 const btnPre = document.createElement('button');
 btnPre.textContent = "Précédent";
@@ -302,6 +313,7 @@ btnPre.addEventListener('click', () => {
         month = 11;
         year--;
     }
+    trYear.innerText = year;
     pMonth.textContent = tabMonth[month];
 });
 
@@ -322,16 +334,16 @@ btnNext.addEventListener('click', () => {
     tab.innerHTML = "";
     createTab();
     month++;
-    if (month>11) {
+    if  (month>11) {
         month = 0;
         year++;
     }
+    trYear.innerText = year;
     pMonth.textContent = tabMonth[month];
 });
 
+
 // let trDays = document.createElement
-
-
 
 let tab = document.createElement('table');
 divInputGroup.appendChild(tab);
@@ -353,67 +365,170 @@ for (let i = 0; i < 7; i++) {
     
 }
 
+
+let acceptedReservations = reservations.filter(reservations => reservations.status === 'accepted');
+// console.log(acceptedReservations);
+let datesReservations = [];
+let dateAccepted = SelectDateAccepted(acceptedReservations);
+console.log(dateAccepted);
+
+let currentDateBeginDay;
+let currentDateEndDay;
+let currentDateBeginMonth;
+let currentDateEndMonth;
+let currentDate;
+let nbJours;
+
+// for (let i = 0; i < dateAccepted.length; i++) {
+//     currentDateBegin = new Date(dateAccepted[i][0]);
+//     currentDateEnd = new Date(dateAccepted[i][1]);  
+
+//     currentDateBeginMonth = currentDateBegin.getMonth();
+//     // console.log(currentDateBeginMonth);
+    
+//     currentDateEndMonth = currentDateEnd.getMonth();
+//     // console.log(currentDateEndMonth);
+
+//     currentDateBeginDay = currentDateBegin.getDate();
+//     // console.log(currentDateBeginDay);
+    
+//     currentDateEndDay = currentDateEnd.getDate();
+//     // console.log(currentDateEndDay);
+// }
+
+// function grisDate(e,f) {
+//     dateTab = new Date(year, month,)
+    
+//     if (currentDateBeginMonth === currentDateEndMonth) {
+//         nbJours = currentDateEndDay-currentDateBeginDay;
+//     } else {
+//         for (let i = 0; i < (currentDateEndMonth - currentDateBeginMonth); i++) {
+//             if (i===0) {
+//                 nbJours += nbDayMonth-currentDateBeginDay;
+//             } else if (i === (currentDateEndMonth-currentDateBeginMonth)) {
+//                 nb += currentDateEndDay;
+//             } else {
+//                 nbJours += nbDayMonth;
+//             }
+//         }
+//     }
+//     console.log(nbJours);
+//     if (f >= currentDateBegin && f <= currentDateEnd ) {
+//         for (let i = 0; i < nbJours; i++) {
+//         //     let dateTab = new Date(year, month, 1);
+//             // let tmp = currentDateBeginDay;
+//             e.classList.add("text-secondary");
+//         }
+//     }
+// }
+// grisDate();
 function createTab() {
     // trMonth.appendChild(bNext);
     // trMonth.appendChild(bPre);
-
-    let monthDay = new Date(date.getFullYear(),date.getMonth()+displayMonth).getDay();
-    let nbDayMonth = new Date(date.getFullYear(),date.getMonth()+1+displayMonth,0).getDate();
     let dayCount=1;
-    let beforeArray = [];
+    let nbDayMonth = new Date(date.getFullYear(),date.getMonth()+1+displayMonth,0).getDate();
+    let monthDay = new Date(date.getFullYear(),date.getMonth()+displayMonth).getDay();
+    
+    
+    // let beforeArray = [];
     let tr;
+    let td;
     for (let i = 0; i < 42; i++) {
         if (i===0 || (i)%7===0) {
             tr = document.createElement('tr');
             tab.appendChild(tr);
         }
-        let td = document.createElement('td');
+        td = document.createElement('td');
         td.className = 'text-center p-1';
         tr.appendChild(td);
         if (i===monthDay) {
             td.textContent = dayCount;
+            // grisDate(td,dateTab);
+            grisDate(td);
             dayCount++;
             monthDay++;
+            currentDate = new Date(year, month + displayMonth, dayCount);
+            console.log(currentDate);
+            
         }else{
-            beforeArray.push(td);
+            // beforeArray.push(td);
         }
         if (dayCount>nbDayMonth) {
             break;
-        }    
+        }
     }
 
-    beforeArray.reverse();
-    // for (let i = 0; i < ; i++) {
-    //     const element = array[i];
+        pMonth.textContent = tabMonth[month];
         
-    // }
-    pMonth.textContent = tabMonth[month];
-
 }
 createTab();
 
-let acceptedReservations = reservations.filter(reservations => reservations.status === 'accepted');
-console.log(acceptedReservations);
-let datesReservations = [];
+function grisDate(e) {
+    for (let j = 0; j < dateAccepted.length; j++) {
+        let currentDateBegin = new Date(dateAccepted[j][0]);
+        let currentDateEnd = new Date(dateAccepted[j][1]);
+        if (currentDate >= currentDateBegin && currentDate <= currentDateEnd ) {
+            e.classList.add("text-secondary");
+            console.log('good');
+        }
+    }
+}
+
 function SelectDateAccepted () {
     let tabDate = [];
     for (let i = 0; i < acceptedReservations.length; i++) {
-        // tabDate = [];
+        tabDate = [];
         tabDate.push(acceptedReservations[i].beginDate);
         tabDate.push(acceptedReservations[i].endDate);
+
+        // console.log(acceptedReservations[i].beginDate);
+        // console.log(acceptedReservations[i].endDate);
+        
         datesReservations.push(tabDate);
         // console.log(tabDate);
         // console.log(datesReservations);
         
         
     }
+    return datesReservations;
 
 }
-
-acceptedReservations.filter(SelectDateAccepted); 
-console.log(acceptedReservations);
-
-console.log(datesReservations);
+// let truc = SelectDateAccepted(acceptedReservations);
+// console.log(truc);
 
 
 
+// recup date des resa acceptees :
+// let y1 = new Date(truc[0][0]);
+// let y = y1.getFullYear()
+// let m = y1.getMonth()
+// let d = y1.getDate()
+// console.log(y,m,d);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // if (datesReservations.some(range => 
+        //     currentDate >= new Date(range[0]) && currentDate <= new Date(range[1]))) {
+        //     td.classList.add('grayed-out'); // Assure-toi de définir cette classe dans le CSS
+        // }
