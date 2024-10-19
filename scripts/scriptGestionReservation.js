@@ -50,7 +50,7 @@ let reservations = [
 ];
 
 
-function createMain () {
+function gestionResaGeneration () {
     let main = document.getElementById('main-id');
     main.innerHTML = "";
 
@@ -73,8 +73,6 @@ function createMain () {
     // createTab();
 
 }
-createMain();
-
 
 
 function tabTri() {
@@ -166,7 +164,7 @@ function creationResa(row) {
                 acceptButton.disabled = true;
                 refuseButton.disabled = false;
                 alert('Réservation acceptée !');
-                createMain();
+                gestionResaGeneration();
         });
 
         let refuseButton = document.createElement('button');
@@ -183,7 +181,7 @@ function creationResa(row) {
             refuseButton.disabled = true;
             acceptButton.disabled = false;
             alert('Réservation refusée !');
-            createMain();
+            gestionResaGeneration();
         });
 
         let resaH = document.createElement('h4');

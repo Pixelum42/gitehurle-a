@@ -245,6 +245,7 @@ function generateConnexion() {
       closeConnexion();
       //generateAdminNav();
       //generateAdminResa();
+      gestionResaGeneration();
     }
     else{
       alert('Mauvais Utilisateur / Mot de Passe');      
