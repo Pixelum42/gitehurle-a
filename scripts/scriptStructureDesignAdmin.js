@@ -202,12 +202,12 @@
     }
     
     
-function generateStructure() {
+function generateStructureAdmin() {
         makeNavAdmin();
         makeHeaderAdmin();
         makeFooterAdmin();
     
         defineElementColors();
     }
-    generateStructure();
+    generateStructureAdmin();
     
