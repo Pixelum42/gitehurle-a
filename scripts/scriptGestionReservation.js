@@ -1,12 +1,3 @@
-// let divResa = [];
-// let tabMonth = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-// let date = new Date();
-// let year = date.getFullYear();
-// let month = date.getMonth();
-// let displayMonth = 0;
-// let tab = document.createElement('table');
-// let pMonth = document.createElement('p');
-
 
 
 let chambre = "chambre double";
@@ -26,7 +17,7 @@ let date1 = () => {
 
 
 let formule = "-10%";
-let messageFac = "Les gens, n'est-ce pas ?";
+let messageFac = "Les gens, n'est-ce pas ? THE SOFTWARE IS PROVIDED AS IS AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.";
 
 
 let reservations = [
@@ -220,7 +211,7 @@ function creationResa(row) {
         showButton.className = 'btn btn-info mb-2';
         divResa[i].appendChild(showButton);
         showButton.addEventListener('click', () => {
-            addInfo(i);
+            addInfo(i, divResa);
             showButton.remove();
         });
 
@@ -259,7 +250,7 @@ function creationResa(row) {
 // creationResa();
 
 
-function addInfo (i) {
+function addInfo (i, divResa) {
 
     let divInfo = document.createElement('div');
     divResa[i].appendChild(divInfo);
@@ -277,9 +268,10 @@ function addInfo (i) {
     p = document.createElement('p');
         divInfo.appendChild(p);
         p.innerText = reservations[i].telephone;
-    p = document.createElement('p');
-        divInfo.appendChild(p);
-        p.innerText = "Message : " + reservations[i].message;
+    let pMes = document.createElement('p');
+        // p.id = `message-id-${i}`;
+        divInfo.appendChild(pMes);
+        pMes.innerText = "Message : " + reservations[i].message;
     
     let divButtonEnd = document.createElement('div');
     divInfo.appendChild(divButtonEnd);
@@ -291,8 +283,28 @@ function addInfo (i) {
     button.innerText = 'Répondre';
     button.className = 'btn btn-info mb-20';
     aFormRetour.appendChild(button);
-    aFormRetour.href = 'lien vers formulaire retour';
-    aFormRetour.target = '_blank';
+
+    aFormRetour.addEventListener('click',()=>{
+        const blurTable=[];
+          blurTable.push(document.getElementById('header-id'));
+          blurTable.push(document.getElementById('nav-id'));
+          blurTable.push(document.getElementById('main-id'));
+          blurTable.push(document.getElementById('footer-id'));
+           
+           console.log(blurTable);
+           for (let i = 0; i < blurTable.length; i++) {
+            blurTable[i].style.filter= 'blur(4px)';          
+           }
+          //  document.body.classList.add('d-flex', 'justify-content-between','align-items-center')
+           setTimeout(() => {
+            generateRetMessage(reservations[i].message);
+            
+           }, 300);
+      });
+
+
+    // aFormRetour.href = 'lien vers formulaire retour';
+    // aFormRetour.target = '_blank';
 
     let buttonBack = document.createElement('button');
     divButtonEnd.appendChild(buttonBack);
@@ -305,7 +317,7 @@ function addInfo (i) {
         showButton.className = 'btn btn-info mb-2';
         divResa[i].appendChild(showButton);
         showButton.addEventListener('click', () => {
-            addInfo(i);
+            addInfo(i, divResa);
             showButton.remove();
         });
     })
@@ -475,4 +487,91 @@ function grisDate(e, currentDate) {
     
     
 }
+
+// formulaire réponse pop-up
+
+
+function generateRetMessage(Message) {
+    // if(document.getElementById('co-div')){document.getElementById('co-div').remove();}
+    const reDiv = document.createElement('div');
+    reDiv.id='re-div';
+    reDiv.classList.add('position-fixed', 'translate-middle', 'top-50', 'start-50', 'co-div');
+    document.body.appendChild(reDiv);
+
+    // let button = document.createElement('button');
+    // button.innerText = "X";
+    // button.className = "bg-danger"
+    // reDiv.appendChild(button);
+   
+    let form = document.createElement('form');
+    form.className = 'form-signin p-3 rounded co-div bg-light border border-2 border-black';
+    form.setAttribute('style','position:relative; z-index:666');
+    reDiv.appendChild(form);
+
+    let divHeader = document.createElement('div');
+    form.appendChild(divHeader);
+
+    let button = document.createElement('button');
+    button.innerText = "X";
+    button.className = "bg-danger"
+    divHeader.appendChild(button);
+    button.addEventListener('click',closeRetMessage);
+   
+    let h1 = document.createElement('h1');
+    h1.className = "co-div h3 mb-3 fw-normal";
+    h1.textContent = "Répondre au message";
+    divHeader.appendChild(h1);
+
+    let divMessage = document.createElement('div');
+    divMessage.className = "form-floating co-div";
+    form.appendChild(divMessage);
+
+    let labelMessage = document.createElement("p");
+    divMessage.appendChild(labelMessage);
+    labelMessage.className = "font-weight-bold";
+    labelMessage.innerText = "Message :";
+    labelMessage.setAttribute("for", "info");
+
+    let pMessage = document.createElement('p'); 
+    pMessage.innerText = Message;
+    divMessage.appendChild(pMessage);
+
+    let divReponse = document.createElement('div');
+    divReponse.className = "form-floating co-div";
+    form.appendChild(divReponse);
+
+    let labelReponse = document.createElement("p");
+    divMessage.appendChild(labelReponse);
+    labelReponse.className = "font-weight-bold";
+    labelReponse.innerText = "Réponse :";
+    labelReponse.setAttribute("for", "info");
+
+
+    let textAreaMessage = document.createElement("textarea");
+    divReponse.appendChild(textAreaMessage);
+    textAreaMessage.className = "w-100";
+
+    button = document.createElement('button');
+    button.innerText = "Envoyer";
+    button.className = "btn btn-info m-1";
+    form.appendChild(button);
+    button.addEventListener('click', () => {
+        alert('Message envoyé');
+        // envoyer message au client via mail
+    })
+
+   
+}
+   
+  function closeRetMessage() {
+    document.getElementById('re-div').remove();
+    const blurTable=[];
+    blurTable.push(document.getElementById('header-id'));
+    blurTable.push(document.getElementById('nav-id'));
+    blurTable.push(document.getElementById('main-id'));
+    blurTable.push(document.getElementById('footer-id'));
+    for (let i = 0; i < blurTable.length; i++) {
+    blurTable[i].style.filter= 'blur(0px)';          
+    }
+  }
 
