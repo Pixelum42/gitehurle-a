@@ -40,7 +40,7 @@ let spacesRepertory= [
 
 
 function generateMainAdminSpaceManagement(space){// arg take spaceName[i];
-    const main = document.getElementsByTagName("main");
+    const main = document.getElementById("main-id");
     main.innerHTML = '';
 
     const navGMASM = document.createElement('nav');
