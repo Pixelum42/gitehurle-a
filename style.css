@@ -1,0 +1,112 @@
+h1 {
+    color: red;
+}
+
+table, tr, td {
+    border: solid 2px black;
+}
+
+
+/* .div-resa-list,
+.div-calendar {
+    border: black solid 3px;
+}
+.div-resa {
+    border: blue solid 2px;
+} */
+
+
+/* .calendar, th, td {
+    border: 1px solid black;
+} */
+
+
+
+
+
+
+/*variables*/
+/* :root {
+--white: #fff;
+--main: #eaedf0;
+--accent: #0041ff;
+--accent-2: #ebedf0;
+}
+
+/*styles*/
+/* body {
+background-color: var(--main);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.container {
+display: inline-block;
+background-color: var(--white);
+border-radius: 35px;
+padding: 0 1em;
+margin-top: 2em;
+}
+
+header {
+margin: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px;
+}
+.header-display {
+display: flex;
+align-items: center;
+}
+
+.header-display p {
+color: var(--accent);
+margin: 5px;
+font-size: 1.2rem;
+word-spacing: 0.5rem;
+}
+
+pre {
+padding: 10px;
+margin: 0;
+cursor: pointer;
+font-size: 1.2rem;
+color: var(--accent);
+}
+
+.days,
+.week {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+margin: auto;
+padding: 0 20px;
+justify-content: space-between;
+}
+.week div,
+.days div {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 3rem;
+width: 3em;
+border-radius: 100%;
+}
+.days div:hover {
+background: var(--accent-2);
+color: rgb(25, 25, 201);
+cursor: pointer;
+}
+.week div {
+opacity: 0.5;
+}
+.current-date {
+background-color: var(--accent);
+color: var(--white);
+}
+.display-selected {
+margin-bottom: 10px;
+padding: 20px 20px;
+text-align: center;
+}
+ */
