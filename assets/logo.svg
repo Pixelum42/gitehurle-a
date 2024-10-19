@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <path style="fill: rgba(216, 216, 216, 0); stroke-width: 24px; stroke-linecap: round; stroke: rgb(106, 56, 31);" d="M 161.494 22.779 C 253.187 23.737 311.058 129.837 260.818 214.028 C 210.578 298.219 87.769 300.422 39.017 214.028 C 5.278 154.238 20.869 77.32 81.302 41.296" transform="matrix(-0.000876000035, 1, -1, -0.000876000035, 300.131412277349, 0.131394746405)"/>
+  <rect x="60.944" y="148.792" width="227.683" height="24.156" rx="6.925" ry="6.925" style="stroke: rgb(106, 56, 31); fill: rgb(106, 56, 31);"/>
+  <rect x="168.219" y="74.818" width="30.865" height="23.146" rx="10.211" ry="10.211" style="stroke: rgb(106, 56, 31); fill: rgb(106, 56, 31); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.503858, 0.863786, -1.134232, 0.040221, 75.490351, -4.07025)"/>
+  <rect x="37.65" y="143.695" width="173.884" height="24.156" rx="6.925" ry="6.925" style="stroke: rgb(0, 0, 0); transform-box: fill-box; transform-origin: 50% 50%; stroke-opacity: 0; fill: rgb(106, 56, 31);" transform="matrix(-0.000078, 1, -1, -0.000078, -23.909641, -6.985619)"/>
+  <rect x="37.65" y="143.695" width="173.884" height="24.156" rx="6.925" ry="6.925" style="stroke: rgb(0, 0, 0); transform-origin: 124.592px 155.773px; fill: rgb(106, 56, 31); stroke-opacity: 0;" transform="matrix(-0.000078, 1, -1, -0.000078, 75.808763, -7.259341)"/>
+</svg>
