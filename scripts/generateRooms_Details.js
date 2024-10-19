@@ -5,8 +5,8 @@ function displayRoomDetails(room) {
     const chambreDiv = document.createElement('div');
     chambreDiv.classList.add('chambre');
     chambreDiv.style.margin = '20px';
-    chambreDiv.style.display = 'flex';  // Disposer en ligne
-    chambreDiv.style.alignItems = 'center'; // Centrer verticalement le carousel
+    chambreDiv.style.display = 'flex';  
+    chambreDiv.style.alignItems = 'center';
     chambreDiv.style.gap = '20px';
 
     // Carousel d'images (à gauche, centré)
@@ -27,7 +27,7 @@ function displayRoomDetails(room) {
     carouselImage.style.objectFit = 'cover';
     carouselDiv.appendChild(carouselImage);
 
-    // Flèches de navigation
+
     const prevArrow = document.createElement('button');
     prevArrow.textContent = '<';
     prevArrow.style.position = 'absolute';
@@ -54,7 +54,7 @@ function displayRoomDetails(room) {
     nextArrow.style.cursor = 'pointer';
     carouselDiv.appendChild(nextArrow);
 
-    // Gestion du changement d'images dans le carousel
+  
     prevArrow.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex - 1 + room.images.length) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
@@ -65,9 +65,9 @@ function displayRoomDetails(room) {
         carouselImage.src = room.images[currentImageIndex];
     });
 
-    chambreDiv.appendChild(carouselDiv);  // Ajout du carousel à gauche, centré verticalement
+    chambreDiv.appendChild(carouselDiv);  
 
-    // Détails à droite du carousel (description uniquement)
+    
     const detailsDiv = document.createElement('div');
     detailsDiv.style.flex = '1';  // Prendre tout l'espace disponible
 
@@ -126,9 +126,9 @@ function displayRoomDetails(room) {
     reservationButton.style.borderRadius = '5px';
     reservationButton.style.cursor = 'pointer';
 
-    // reservationButton.addEventListener('click', (event) => {
-    //     makeFormBook(room.id); 
-    // });
+    reservationButton.addEventListener('click', (event) => {
+        makeFormBook(room); 
+    });
     infoSection.appendChild(reservationButton);
 
     // Ajouter la description et les infos dans le div de détails

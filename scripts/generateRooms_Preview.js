@@ -42,7 +42,7 @@ const rooms = [
             "https://i.ibb.co/gF1WgLC/appartbathroom.jpg"
         ],
         
-        formules: ["nature et découverte", "travail saisonnier"], // Retiré "weekend d'amour"
+        formules: ["nature et découverte", "travail saisonnier"], 
         prix: 110,
         descriptionSup: "Douche + WC. Minimum de 2 nuits en semaine.",
         shortDescription: "Vous aspirez à un peu d'indépendance et d'espace pour votre famille ? L'appartement \"Les Horizons Sauvages\" est fait pour vous !"
@@ -73,7 +73,7 @@ function displayRoomPreview(room) {
     img.style.objectFit = 'cover';
     chambreDiv.appendChild(img);  // Ajouter l'image sous le titre
 
-    // Utiliser la description courte que vous avez fournie
+    // Utiliser la description courte
     const description = document.createElement('p');
     description.textContent = room.shortDescription;
     chambreDiv.appendChild(description);
