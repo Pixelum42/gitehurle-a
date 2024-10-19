@@ -1,3 +1,8 @@
+const adminLog = {
+    "username" : "admin",
+    "password" : "admin"
+  }
+
 const makeNav = () => {
     const navbar = document.getElementById("nav-id");
     navbar.className = "navbar navbar-expand navbar-light fixed-top";
@@ -137,6 +142,114 @@ const makeHeader = () => {
     headerDiv.appendChild(h1Tag);
 }
 
+function generateConnexion() {
+    if(document.getElementById('co-div')){document.getElementById('co-div').remove();}
+    const coDiv = document.createElement('div');
+    coDiv.id='co-div';
+    coDiv.classList.add( 'co-div','translate-middle','position-fixed', 'top-50', 'start-50','z-3');
+    document.body.appendChild(coDiv);
+   
+    let form = document.createElement('form');
+    form.className = 'form-signin  p-3 rounded co-div';
+    form.setAttribute('style','z-index:666;background-color : black');
+    coDiv.appendChild(form);
+    
+    let h1 = document.createElement('h1');
+    h1.className = "co-div h3 mb-3 fw-normal";
+    h1.textContent = "Admin Panel";
+    form.appendChild(h1);
+    
+    let div = document.createElement('div');
+    div.className = "form-floating co-div";
+    form.appendChild(div);
+    
+    let input = document.createElement('input');
+    input.type = "text";
+    input.id = "floatingInput";
+    input.placeholder = "Username";
+    input.className = "co-div mb-2 form-control";
+    div.appendChild(input);
+    
+    let label = document.createElement('label');
+    label.setAttribute('for',"floatingInput");
+    label.className = 'co-div';
+    label.textContent = "Username";
+    div.appendChild(label);
+    
+    div = document.createElement('div');
+    div.className = "form-floating co-div";
+    form.appendChild(div);
+    
+    input = document.createElement('input');
+    input.type = "password";
+    input.id = "floatingPassword";
+    input.placeholder = "Password";
+    input.className = "co-div form-control";
+    div.appendChild(input);
+    
+    label = document.createElement('label');
+    label.setAttribute('for', 'floatingPassword');
+    label.className = 'co-div';
+    label.textContent = "Password";
+    div.appendChild(label);
+    
+    div = document.createElement('div');
+    div.className = "form-check text-start my-3 co-div";
+    form.appendChild(div);
+    
+    input = document.createElement('input');
+    input.type = "checkbox";
+    input.id = "flexCheckDefault";
+    input.value = "remember-me";
+    input.className = "co-div form-check-input";
+    div.appendChild(input);
+    
+    label = document.createElement('label');
+    label.className = "co-div form-check-label";
+    label.setAttribute('for', 'flexCheckDefault')
+    label.textContent = "Remember me";
+    div.appendChild(label);
+    
+    let button = document.createElement('button');
+    button.className = "co-div btn btn-primary w-100 py-2";
+    button.type = "submit";
+    button.textContent = "Sign in";
+    button.addEventListener('click',adminCo);
+    form.appendChild(button); 
+  }
+  
+  function closeConnexion() {
+    document.getElementById('co-div').remove();
+    const blurTable=[];
+    blurTable.push(document.getElementById('header-id'));
+    blurTable.push(document.getElementById('nav-id'));
+    blurTable.push(document.getElementById('main-id'));
+    blurTable.push(document.getElementById('footer-id'));
+    for (let i = 0; i < blurTable.length; i++) {
+    blurTable[i].style.filter= 'blur(0px)';          
+    }
+  }
+  
+  window.onclick = function(event) {
+    try {
+      if(!(event.target.classList.value.split(' ').includes('co-div'))){
+        closeConnexion();
+      }    
+    } catch (error) {
+      return null;
+    }
+  }
+  
+  function adminCo(){
+    if(document.getElementById('floatingInput').value===adminLog.username && document.getElementById('floatingPassword').value===adminLog.password){
+      closeConnexion();
+      //generateAdminNav();
+      //generateAdminResa();
+    }
+    else{
+      alert('Mauvais Utilisateur / Mot de Passe');      
+    }
+  }
 
 const makeFooter = () => {
     const footer = document.getElementById("footer-id");
@@ -156,8 +269,20 @@ const makeFooter = () => {
     footerCopyrightDiv.appendChild(footerCopyright);
 
     const footerLogoLink = document.createElement("a");
-    footerLogoLink.className = "ms-3";
+    footerLogoLink.className = "ms-3 co-div";
     footerLogoLink.href = "#";
+    
+    footerLogoLink.addEventListener('click',()=>{
+        const blurTable=[];
+        blurTable.push(document.getElementById('header-id'));
+        blurTable.push(document.getElementById('nav-id'));
+        blurTable.push(document.getElementById('main-id'));
+        blurTable.push(document.getElementById('footer-id'));
+        for (let i = 0; i < blurTable.length; i++) {
+        blurTable[i].style.filter= 'blur(4px)';          
+        }  
+        generateConnexion();
+      });
     // formLink1.addEventListener("click", () => {
     //     adminPage();
     // });
@@ -165,6 +290,7 @@ const makeFooter = () => {
 
     const footerLogo = document.createElement("img");
     footerLogo.src = "assets/logo.svg";
+    footerLogo.className='co-div';
     footerLogo.width = 40;
     footerLogo.height = 40;
     footerLogo.alt = "logo";
