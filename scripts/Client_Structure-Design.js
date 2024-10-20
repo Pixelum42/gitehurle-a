@@ -33,6 +33,7 @@ const makeNav = () => {
     logo.src = "assets/logo.svg";
     logo.width = 40;
     logo.height = 40;
+    logo.setAttribute("draggable", "false");
     logo.alt = "Logo de Le Gîte Hurle";
     brandDiv.appendChild(logo);
 
@@ -66,6 +67,7 @@ const makeNav = () => {
     const roomItem0 = document.createElement("li");
     const roomItem1 = document.createElement("li");
     const roomItem2 = document.createElement("li");
+
     dropdownMenu.append(roomItem0, roomItem1, roomItem2);
 
     const roomLink0 = document.createElement("a");
@@ -92,6 +94,34 @@ const makeNav = () => {
     roomLink0.innerText = "Chambre double";
     roomLink1.innerText = "Chambre familiale";
     roomLink2.innerText = "Appartement";
+
+    roomLink0.addEventListener("mouseenter", () => {
+        roomLink0.style.color = rootColors["--primary"];
+        roomLink0.style.backgroundColor = rootColors["--background"];
+    });
+    roomLink0.addEventListener("mouseleave", () => {
+        roomLink0.style.color = rootColors["--text"];
+        roomLink0.style.backgroundColor = rootColors["--secondary"];
+    });
+    
+    roomLink1.addEventListener("mouseenter", () => {
+        roomLink1.style.color = rootColors["--primary"];
+        roomLink1.style.backgroundColor = rootColors["--background"];
+    });
+    roomLink1.addEventListener("mouseleave", () => {
+        roomLink1.style.color = rootColors["--text"];
+        roomLink1.style.backgroundColor = rootColors["--secondary"];
+    });
+    
+    roomLink2.addEventListener("mouseenter", () => {
+        roomLink2.style.color = rootColors["--primary"];
+        roomLink2.style.backgroundColor = rootColors["--background"];
+    });
+    roomLink2.addEventListener("mouseleave", () => {
+        roomLink2.style.color = rootColors["--text"];
+        roomLink2.style.backgroundColor = rootColors["--secondary"];
+    });
+    
     roomItem0.appendChild(roomLink0);
     roomItem1.appendChild(roomLink1);
     roomItem2.appendChild(roomLink2);
@@ -101,6 +131,10 @@ const makeNav = () => {
     const formLink0 = document.createElement("a");
     formLink0.className = "nav-link";
     formLink0.href = "#";
+    formLink0.style.color = rootColors["--text"];
+
+    formLink0.addEventListener("mouseenter", () => { formLink0.style.color = rootColors["--primary"]; });
+    formLink0.addEventListener("mouseleave", () => { formLink0.style.color = rootColors["--text"]; });
     // formLink0.addEventListener("click", () => {
     //     makeFormBook();
     // });
@@ -112,6 +146,10 @@ const makeNav = () => {
     const formLink1 = document.createElement("a");
     formLink1.className = "nav-link";
     formLink1.href = "#";
+    formLink1.style.color = rootColors["--text"];
+    
+    formLink1.addEventListener("mouseenter", () => { formLink1.style.color = rootColors["--primary"]; });
+    formLink1.addEventListener("mouseleave", () => { formLink1.style.color = rootColors["--text"]; });
     // formLink1.addEventListener("click", () => {
     //     makeFormContact();
     // });
@@ -204,7 +242,10 @@ function generateConnexion() {
     button.style.backgroundColor = rootColors["--accent"];
     button.textContent = "Sign in";
 
-    button.addEventListener('click', adminCo);
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        adminCo();
+    });
     form.appendChild(button);
 }
 
@@ -233,8 +274,6 @@ window.onclick = function (event) {
 function adminCo() {
     if (document.getElementById('floatingInput').value === adminLog.username && document.getElementById('floatingPassword').value === adminLog.password) {
         closeConnexion();
-        //generateAdminNav();
-        //generateAdminResa();
         gestionResaGeneration();
         generateStructureAdmin();
     }
@@ -263,7 +302,9 @@ const makeFooter = () => {
 
     const footerLogoLink = document.createElement("a");
     footerLogoLink.className = "ms-3 co-div";
-    // footerLogoLink.href = "#";
+    footerLogoLink.addEventListener("mouseover", () => {
+        footerLogoLink.style.cursor = "pointer";
+    });
     footerLogoLink.addEventListener('click', () => {
         const blurTable = [];
         blurTable.push(document.getElementById('header-id'));
@@ -282,6 +323,7 @@ const makeFooter = () => {
     footerLogo.className = 'co-div';
     footerLogo.width = 40;
     footerLogo.height = 40;
+    footerLogo.setAttribute("draggable", "false");
     footerLogo.alt = "logo";
     footerLogoLink.appendChild(footerLogo);
 
@@ -297,26 +339,25 @@ const makeFooter = () => {
     contactLink.className = "nav-link";
     contactLink.id = "contact";
     contactLink.href = "#";
+    contactLink.style.color = rootColors["--text"];
     contactLink.innerText = "Contact";
     contactItem.appendChild(contactLink);
 };
 
 
+// Defines color for specific elements
 function defineElementColors() {
-    // Defines color for specific elements
-    const allATag = document.querySelector("a");
-    allATag.style.color = rootColors["--text"];
-
-    // allATag.addEventListener("mouseenter", )
-    // allATag.addEventListener("mouseleave")
-    // allATag.style.backgroundColor = rootColors["--background"];
-
     document.body.className = "d-flex flex-column mt-5 pt-2";
     document.body.style.backgroundColor = rootColors["--background"];
+
+    const allATag = document.querySelector("a");
+    allATag.style.color = rootColors["--text"]
 
     const contactLink = document.getElementById("contact");
     contactLink.style.color = rootColors["--text"];
 
+    contactLink.addEventListener("mouseenter", () => { contactLink.style.color = rootColors["--primary"]; });
+    contactLink.addEventListener("mouseleave", () => { contactLink.style.color = rootColors["--text"]; });
 }
 
 

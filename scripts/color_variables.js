@@ -9,7 +9,7 @@ const rootColors = {
 // Sets the color values globally
 const colors = () => {
     for (let value in rootColors) {
-        let color = rootColors[value]
+        let color = rootColors[value];
         document.documentElement.style.setProperty(value, color, "important");
     }
 }

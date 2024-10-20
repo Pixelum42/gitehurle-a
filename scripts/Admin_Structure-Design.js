@@ -2,7 +2,7 @@ function makeNavAdmin() {
     const navbar = document.getElementById("nav-id");
     navbar.innerHTML = '';
     navbar.className = "navbar navbar-expand navbar-light fixed-top";
-    navbar.style.backgroundColor = rootColors["--A-secondary"];
+    navbar.style.backgroundColor = rootColors["--secondary"];
 
     const divNavbar = document.createElement("div");
     divNavbar.className = "container-fluid d-flex justify-content-evenly";
@@ -19,7 +19,7 @@ function makeNavAdmin() {
     // roomLink0.addEventListener("click", () => {
     // generateClient_Accueil();
     // });
-    brand.style.color = rootColors["--A-text"];
+    brand.style.color = rootColors["--text"];
     brand.innerText = "Le Gîte Hurle";
     brandDiv.appendChild(brand);
 
@@ -28,6 +28,7 @@ function makeNavAdmin() {
     logo.src = "assets/logo.svg";
     logo.width = 40;
     logo.height = 40;
+    logo.setAttribute("draggable", "false");
     logo.alt = "Logo de Le Gîte Hurle";
     brandDiv.appendChild(logo);
 
@@ -37,7 +38,7 @@ function makeNavAdmin() {
     // roomLink0.addEventListener("click", () => {
     // generateClient_Accueil();
     // });
-    pAdmin.style.color = rootColors["--A-text"];
+    pAdmin.style.color = rootColors["--text"];
     pAdmin.innerText = "Admin";
     brandDiv.appendChild(pAdmin);
 
@@ -54,10 +55,14 @@ function makeNavAdmin() {
     formResaLink.className = "nav-link";
     formResaLink.href = "#";
     formResaLink.addEventListener('click', gestionResaGeneration);
-    // formLink0.addEventListener("click", () => {
-    //     gestionDesResa();
-    // });
     formResaLink.innerText = "Gestion des réservations";
+    
+    formResaLink.addEventListener("mouseenter", () => {
+        formResaLink.style.color = rootColors["--primary"];
+    });
+    formResaLink.addEventListener("mouseleave", () => {
+        formResaLink.style.color = rootColors["--text"];
+    });
     formResaItem.appendChild(formResaLink);
     navList.appendChild(formResaItem);
 
@@ -67,10 +72,16 @@ function makeNavAdmin() {
 
     const dropdownTitleLink = document.createElement("a");
     dropdownTitleLink.className = "nav-link dropdown-toggle";
-    dropdownTitleLink.style.color = rootColors["--A-text"];
+    dropdownTitleLink.style.color = rootColors["--text"];
     dropdownTitleLink.setAttribute("data-bs-toggle", "dropdown");
     dropdownTitleLink.setAttribute("aria-expanded", "false");
     dropdownTitleLink.innerText = "Edition du contenu";
+    dropdownTitleLink.addEventListener("mouseenter", () => {
+        dropdownTitleLink.style.color = rootColors["--primary"];
+    });
+    dropdownTitleLink.addEventListener("mouseleave", () => {
+        dropdownTitleLink.style.color = rootColors["--text"];
+    });
     dropdownTitleLink.addEventListener('mouseover', () => {
         dropdownTitleLink.style.cursor = 'pointer';
     });
@@ -78,7 +89,7 @@ function makeNavAdmin() {
 
     const dropdownMenu = document.createElement("ul");
     dropdownMenu.className = "dropdown-menu";
-    dropdownMenu.style.backgroundColor = rootColors["--A-secondary"];
+    dropdownMenu.style.backgroundColor = rootColors["--secondary"];
     editEspForm.appendChild(dropdownMenu);
 
     const espacesItem = document.createElement("li");
@@ -93,17 +104,32 @@ function makeNavAdmin() {
     espLink.addEventListener('click', () => {
         generateMainAdminSpaceManagement(0, 0);
     });
-    // roomLink0.addEventListener("click", () => {
-    //     gestionDesEspaces();
-    // });
     formLink.href = "#";
     // roomLink1.addEventListener("click", () => {
     //     gestionDesFormules();
     // });
-    espLink.style.color = rootColors["--A-text"];
-    formLink.style.color = rootColors["--A-text"];
+
+    espLink.style.color = rootColors["--text"];
     espLink.innerText = "Gestion des espaces";
+    espLink.addEventListener("mouseenter", () => {
+        espLink.style.color = rootColors["--primary"];
+        espLink.style.backgroundColor = rootColors["--background"];
+    });
+    espLink.addEventListener("mouseleave", () => {
+        espLink.style.color = rootColors["--text"];
+        espLink.style.backgroundColor = rootColors["--secondary"];
+    });
+
+    formLink.style.color = rootColors["--text"];
     formLink.innerText = "Gestion des formules";
+    formLink.addEventListener("mouseenter", () => {
+        formLink.style.color = rootColors["--primary"];
+        formLink.style.backgroundColor = rootColors["--background"];
+    });
+    formLink.addEventListener("mouseleave", () => {
+        formLink.style.color = rootColors["--text"];
+        formLink.style.backgroundColor = rootColors["--secondary"];
+    });
 
     espacesItem.appendChild(formLink);
     formulesItem.appendChild(espLink);
@@ -119,6 +145,12 @@ function makeNavAdmin() {
     //     makeFormContact();
     // });
     contactLink1.innerText = "Contact";
+    contactLink1.addEventListener("mouseenter", () => {
+        contactLink1.style.color = rootColors["--primary"];
+    });
+    contactLink1.addEventListener("mouseleave", () => {
+        contactLink1.style.color = rootColors["--text"];
+    });
     contactItem.appendChild(contactLink1);
 
     navList.appendChild(contactItem);
@@ -135,13 +167,13 @@ function makeHeaderAdmin() {
     header.style.backgroundAttachment = "fixed";
 
     const headerDiv = document.createElement("div");
-    headerDiv.className = "my-5 text-white text-center";
+    headerDiv.className = "my-5 text-center";
     header.appendChild(headerDiv);
 
     const h1Tag = document.createElement("h1");
     h1Tag.className = "display-2 py-3 my-5 fw-bold";
     h1Tag.style.textShadow = "1px 3px 0 #969696, 1px 13px 5px #aba8a8";
-    h1Tag.style.color = rootColors["--A-accent"];
+    h1Tag.style.color = rootColors["--accent"];
     h1Tag.innerHTML = "Le Gîte Hurle<br>Admin";
 
     headerDiv.appendChild(h1Tag);
@@ -169,6 +201,9 @@ function makeFooterAdmin() {
     const footerLogoLink = document.createElement("a");
     footerLogoLink.className = "ms-3";
     footerLogoLink.href = "#";
+    footerLogoLink.addEventListener("mouseover", () => {
+        footerLogoLink.style.cursor = "pointer";
+    });
     footerLogoLink.addEventListener('click', generateStructure);
     footerCopyrightDiv.appendChild(footerLogoLink);
 
@@ -176,6 +211,7 @@ function makeFooterAdmin() {
     footerLogo.src = "assets/logo.svg";
     footerLogo.width = 40;
     footerLogo.height = 40;
+    footerLogo.setAttribute("draggable", "false");
     footerLogo.alt = "logo";
     footerLogoLink.appendChild(footerLogo);
 
@@ -189,6 +225,4 @@ function generateStructureAdmin() {
     makeNavAdmin();
     makeHeaderAdmin();
     makeFooterAdmin();
-
-    // defineElementColors();
 }
