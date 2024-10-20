@@ -108,22 +108,17 @@ function displayRoomDetails(room) {
     formulesDiv.style.marginTop = '1em';
     
     // Ajoute les descriptions complètes des formules, sans afficher "weekend d'amour" pour certaines chambres
+    let formulesDispo = [];
+    for (let i = 0; i < FormulaRepertory.length; i++) {
+        if(FormulaRepertory[i].spaceAvailibility[room.id]!=0){
+            formulesDispo.push(FormulaRepertory[i]);                      
+        }
+    } 
     const formuleInfo = document.createElement('p');
     formuleInfo.style.fontSize = '1em';
-    room.formules.forEach(formule => {
-        switch (formule) {
-            case "weekend d'amour":
-                formuleInfo.textContent = "Vivez une expérience amoureuse unique grâce à notre formule Weekend d’amour ! Bénéficiez d'une remise de 10 % sur le total de vos nuitées, tout en savourant un petit déjeuner « lover » servi dans le confort de votre lit. Réveillez-vous en douceur et créez des souvenirs mémorables ensemble !";
-                break;
-            case "nature et découverte":
-                formuleInfo.textContent = "Découvrez la formule Nature et Découverte, parfaite pour tous vos séjours de plus de 5 nuits, week-end inclus ! Vous bénéficierez d'une réduction de 5 % sur l'ensemble de votre expérience, tout en vous lançant dans l'aventure « Rahan » en terre du Gévaudan, où le coutelas vous sera fourni pour parfaire votre escapade !";
-                break;
-            case "travail saisonnier":
-                formuleInfo.textContent = "Saisissez l'opportunité de notre formule travail saisonnier et économisez 20 % sur le tarif total de votre séjour ! Valable pour tous nos types d’espaces à condition de réserver au minimum un mois, cette offre s’applique durant les périodes allant de juin à août (inclus) et de décembre à mars (inclus). En haute saison, une légère majoration de 10 % sur les nuitées sera appliquée. Réservez dès aujourd'hui pour bénéficier de ces avantages !";
-                break;
-            default:
-                formuleInfo.textContent = `Formule : ${formule}`;
-        }
+    formulesDispo.forEach(formule => {
+        const formuleInfo = document.createElement('p');
+        formuleInfo.textContent =  formule.description;
         formuleInfo.style.fontWeight = "400";
         formuleInfo.style.color = rootColors["--text"];
         formulesDiv.appendChild(formuleInfo);

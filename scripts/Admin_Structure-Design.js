@@ -106,9 +106,6 @@ function makeNavAdmin() {
         generateMainAdminSpaceManagement(0, 0);
     });
     formLink.href = "#";
-    // roomLink1.addEventListener("click", () => {
-    //     gestionDesFormules();
-    // });
 
     espLink.style.color = rootColors["--text"];
     espLink.innerText = "Gestion des espaces";
@@ -131,6 +128,7 @@ function makeNavAdmin() {
         formLink.style.color = rootColors["--text"];
         formLink.style.backgroundColor = rootColors["--secondary"];
     });
+    formLink.addEventListener('click',generateMainAdminFormulaManagement);
 
     espacesItem.appendChild(formLink);
     formulesItem.appendChild(espLink);

@@ -13,7 +13,7 @@ function generateClient_Accueil() {
     histoireText.className = "fw-bold pb-1";
     histoireText.style.color = rootColors["--text"];
     histoireText.style.fontSize = "1.4em";
-    histoireText.innerText = "Bienvenue sur Le Refuge de la Forêt, un gîte familial niché au cœur des montagnes depuis 1985. Notre histoire commence avec Marie et Jean, un couple passionné par la nature, qui a transformé une ancienne ferme en un lieu de détente et de convivialité. Depuis, Le Refuge de la Forêt accueille des voyageurs en quête de tranquillité et d’authenticité, avec un service chaleureux et personnalisé. Venez découvrir la beauté des paysages sauvages et goûter à la sérénité d’un séjour loin du tumulte quotidien.";
+    histoireText.innerText = "Bienvenue sur Le Gîte Hurle, un gîte familial niché au cœur des montagnes depuis 1985. Notre histoire commence avec Marie et Jean, un couple passionné par la nature, qui a transformé une ancienne ferme en un lieu de détente et de convivialité. Depuis, Le Gîte Hurle accueille des voyageurs en quête de tranquillité et d’authenticité, avec un service chaleureux et personnalisé. Venez découvrir la beauté des paysages sauvages et goûter à la sérénité d’un séjour loin du tumulte quotidien.";
 
     histoireDiv.appendChild(histoireText);
     main.appendChild(histoireDiv);
@@ -56,7 +56,13 @@ function generateClient_Accueil() {
     divTextDouble.appendChild(descriptionDouble);
 
     const formuleDouble = document.createElement("p");
-    formuleDouble.textContent = `Formules disponibles : ${rooms[0].formules.join(", ")}`;
+    let formulesDispo = [];
+    for (let i = 0; i < FormulaRepertory.length; i++) {
+        if(FormulaRepertory[i].spaceAvailibility[0]!=0){
+            formulesDispo.push(FormulaRepertory[i].name);
+        }
+    } 
+    formuleDouble.textContent = `Formules disponibles : ${formulesDispo.join(",")}`;
     formuleDouble.style.fontStyle = "italic";
     formuleDouble.style.color = "#555555";
     divTextDouble.appendChild(formuleDouble);
@@ -104,7 +110,13 @@ function generateClient_Accueil() {
     divTextFamille.appendChild(descriptionFamille);
 
     const formuleFamille = document.createElement("p");
-    formuleFamille.textContent = `Formules disponibles : ${rooms[1].formules.join(", ")}`;
+    formulesDispo = [];
+    for (let i = 0; i < FormulaRepertory.length; i++) {
+        if(FormulaRepertory[i].spaceAvailibility[1]!=0){
+            formulesDispo.push(FormulaRepertory[i].name);
+        }
+    } 
+    formuleFamille.textContent = `Formules disponibles : ${formulesDispo.join(",")}`;
     formuleFamille.style.fontStyle = "italic";
     formuleFamille.style.color = "#555555";
     divTextFamille.appendChild(formuleFamille);
@@ -154,7 +166,13 @@ function generateClient_Accueil() {
     divTextAppart.appendChild(descriptionAppart);
 
     const formuleAppart = document.createElement("p");
-    formuleAppart.textContent = `Formules disponibles : ${rooms[2].formules.join(", ")}`;
+    formulesDispo = [];
+    for (let i = 0; i < FormulaRepertory.length; i++) {
+        if(FormulaRepertory[i].spaceAvailibility[2]!=0){
+            formulesDispo.push(FormulaRepertory[i].name);
+        }
+    } 
+    formuleAppart.textContent = `Formules disponibles : ${formulesDispo.join(",")}`;
     formuleAppart.style.fontStyle = "italic";
     formuleAppart.style.color = "#555555";
     divTextAppart.appendChild(formuleAppart);

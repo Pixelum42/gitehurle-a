@@ -542,13 +542,17 @@ function generateRetMessage(Message) {
     let textAreaMessage = document.createElement("textarea");
     divReponse.appendChild(textAreaMessage);
     textAreaMessage.className = "w-100";
-
+    
     button = document.createElement('button');
     button.innerText = "Envoyer";
     button.className = "btn btn-info m-1";
     form.appendChild(button);
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
         alert('Message envoyé');
+        let pSent = document.createElement('p');
+        pSent. textContent = "Message envoyé";
+        divReponse.appendChild(pSent)
     })
 
 
