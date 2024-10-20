@@ -7,8 +7,8 @@ let date1 = () => {
     const m = Math.ceil(Math.random() * 12).toString().padStart(2, 0);
     const d = Math.ceil(Math.random() * 31).toString().padStart(2, 0);
     if (m < 12) {
-        let x = (parseInt(d) + 1).toString().padStart(2,0);
-    
+        let x = (parseInt(d) + 1).toString().padStart(2, 0);
+
         date2 = `${a}-${m}-${x}`;
 
     }
@@ -25,9 +25,9 @@ let reservations = [
     { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
     { "status": 'pending', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
     { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    { "status": 'refused', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac, 'prix': 'prix'},
+    { "status": 'refused', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac, 'prix': 'prix' },
     { "status": 'pending', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac }
-    
+
     // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
     // { "status": 'refused', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
     // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
@@ -50,7 +50,7 @@ let reservations = [
 ];
 
 
-function gestionResaGeneration () {
+function gestionResaGeneration() {
     let main = document.getElementById('main-id');
     main.innerHTML = "";
 
@@ -58,11 +58,11 @@ function gestionResaGeneration () {
     let divRoot = document.createElement('div');
     divRoot.className = "border border-dark d-flex justify-content-between";
     main.appendChild(divRoot);
-    
+
     let divResaList = document.createElement('div');
     divResaList.className = 'container';
     divRoot.appendChild(divResaList);
-    
+
     let divRow = document.createElement('div');
     divRow.className = 'row';
     divResaList.appendChild(divRow);
@@ -81,18 +81,18 @@ function tabTri() {
         let test = reservations[i].beginDate.replaceAll("-", "");
         dateQILDDLDDLR.push(parseInt(test));
     }
-    
+
     for (let i = 0; i < dateQILDDLDDLR.length; i++) {
         for (let j = i + 1; j < dateQILDDLDDLR.length; j++) {
             let tmp;
             let tmp2;
-            
+
             if (dateQILDDLDDLR[j] < dateQILDDLDDLR[i]) {
                 tmp = dateQILDDLDDLR[j];
-                
+
                 dateQILDDLDDLR[j] = dateQILDDLDDLR[i];
                 dateQILDDLDDLR[i] = tmp;
-                
+
                 tmp2 = reservations[j];
                 reservations[j] = reservations[i];
                 reservations[i] = tmp2;
@@ -101,18 +101,18 @@ function tabTri() {
     }
 
     let reservationSorted = [[], [], []];
-    
+
     for (let i = 0; i < reservations.length; i++) {
         if (reservations[i].status === 'pending') {
             reservationSorted[0].push(reservations[i]);
         } else if (reservations[i].status === 'accepted') {
             reservationSorted[1].push(reservations[i]);
         } else
-        reservationSorted[2].push(reservations[i]);
-        
+            reservationSorted[2].push(reservations[i]);
+
     }
     reservations = [];
-    
+
     reservations.push(...reservationSorted[0]);
     reservations.push(...reservationSorted[1]);
     reservations.push(...reservationSorted[2]);
@@ -126,7 +126,7 @@ function tabTri() {
 function creationResa(row) {
     tabTri();
     for (let i = 0; i < reservations.length; i++) {
-        
+
         let divCol = document.createElement('div');
         divCol.className = 'col-md-6';
         row.appendChild(divCol);
@@ -155,16 +155,16 @@ function creationResa(row) {
         acceptButton.className = 'accBtn btn btn-success mb-2';
         divButton.appendChild(acceptButton);
         acceptButton.addEventListener('click', () => {
-                reservations[i].status = 'accepted';
-                divEntResa.classList.remove('border-warning');
-                divEntResa.classList.add('border-success');
-                divTrResa.classList.remove('bg-warning');
-                divTrResa.classList.add('bg-success', 'text-light');
-                divTrResa.innerText = "Réservation acceptée";
-                acceptButton.disabled = true;
-                refuseButton.disabled = false;
-                alert('Réservation acceptée !');
-                gestionResaGeneration();
+            reservations[i].status = 'accepted';
+            divEntResa.classList.remove('border-warning');
+            divEntResa.classList.add('border-success');
+            divTrResa.classList.remove('bg-warning');
+            divTrResa.classList.add('bg-success', 'text-light');
+            divTrResa.innerText = "Réservation acceptée";
+            acceptButton.disabled = true;
+            refuseButton.disabled = false;
+            alert('Réservation acceptée !');
+            gestionResaGeneration();
         });
 
         let refuseButton = document.createElement('button');
@@ -248,29 +248,29 @@ function creationResa(row) {
 // creationResa();
 
 
-function addInfo (i, divResa) {
+function addInfo(i, divResa) {
 
     let divInfo = document.createElement('div');
     divResa[i].appendChild(divInfo);
 
 
     p = document.createElement('p');
-        divInfo.appendChild(p);
-        p.innerText = reservations[i].nom;
+    divInfo.appendChild(p);
+    p.innerText = reservations[i].nom;
     p = document.createElement('p');
-        divInfo.appendChild(p);
-        p.innerText = reservations[i].prenom;
+    divInfo.appendChild(p);
+    p.innerText = reservations[i].prenom;
     p = document.createElement('p');
-        divInfo.appendChild(p);
-        p.innerText = reservations[i].mail;
+    divInfo.appendChild(p);
+    p.innerText = reservations[i].mail;
     p = document.createElement('p');
-        divInfo.appendChild(p);
-        p.innerText = reservations[i].telephone;
+    divInfo.appendChild(p);
+    p.innerText = reservations[i].telephone;
     let pMes = document.createElement('p');
-        // p.id = `message-id-${i}`;
-        divInfo.appendChild(pMes);
-        pMes.innerText = "Message : " + reservations[i].message;
-    
+    // p.id = `message-id-${i}`;
+    divInfo.appendChild(pMes);
+    pMes.innerText = "Message : " + reservations[i].message;
+
     let divButtonEnd = document.createElement('div');
     divInfo.appendChild(divButtonEnd);
     divButtonEnd.className = 'd-flex justify-content-between';
@@ -282,23 +282,23 @@ function addInfo (i, divResa) {
     button.className = 'btn btn-info mb-20';
     aFormRetour.appendChild(button);
 
-    aFormRetour.addEventListener('click',()=>{
-        const blurTable=[];
-          blurTable.push(document.getElementById('header-id'));
-          blurTable.push(document.getElementById('nav-id'));
-          blurTable.push(document.getElementById('main-id'));
-          blurTable.push(document.getElementById('footer-id'));
-           
-           console.log(blurTable);
-           for (let i = 0; i < blurTable.length; i++) {
-            blurTable[i].style.filter= 'blur(4px)';          
-           }
-          //  document.body.classList.add('d-flex', 'justify-content-between','align-items-center')
-           setTimeout(() => {
+    aFormRetour.addEventListener('click', () => {
+        const blurTable = [];
+        blurTable.push(document.getElementById('header-id'));
+        blurTable.push(document.getElementById('nav-id'));
+        blurTable.push(document.getElementById('main-id'));
+        blurTable.push(document.getElementById('footer-id'));
+
+        console.log(blurTable);
+        for (let i = 0; i < blurTable.length; i++) {
+            blurTable[i].style.filter = 'blur(4px)';
+        }
+        //  document.body.classList.add('d-flex', 'justify-content-between','align-items-center')
+        setTimeout(() => {
             generateRetMessage(reservations[i].message);
-            
-           }, 300);
-      });
+
+        }, 300);
+    });
 
 
     // aFormRetour.href = 'lien vers formulaire retour';
@@ -318,16 +318,16 @@ function addInfo (i, divResa) {
             addInfo(i, divResa);
             showButton.remove();
         });
-    })
+    });
 
-    
+
 }
 
 
 
 
 function displayCalendar(root) {
-    let tabMonth = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+    let tabMonth = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     let displayMonth = 0;
     let tab = document.createElement('table');
     let pMonth = document.createElement('p');
@@ -337,28 +337,28 @@ function displayCalendar(root) {
     let divCalendar = document.createElement('div');
     divCalendar.className = 'div-calendar border border-dark w-75 p-5 m-5';
     root.appendChild(divCalendar);
-    
-    
-    
+
+
+
     let divInputGroup = document.createElement('div');
     divInputGroup.className = "input-group d-flex flex-column";
     divCalendar.appendChild(divInputGroup);
-    
+
     const inputGroupText = document.createElement('span');
     inputGroupText.className = "input-group-text text-center";
     inputGroupText.textContent = 'Calendrier des réservations';
     divInputGroup.appendChild(inputGroupText);
-    
+
     let trYear = document.createElement('div');
     trYear.innerText = year;
-    divInputGroup.appendChild(trYear)
-    
+    divInputGroup.appendChild(trYear);
+
     let trMonth = document.createElement('span');
     trMonth.className = "d-flex input-group justify-content-between";
     divInputGroup.appendChild(trMonth);
-    
-    
-    
+
+
+
     const btnPre = document.createElement('button');
     btnPre.textContent = "Précédent";
     btnPre.className = "input-group-text";
@@ -366,7 +366,7 @@ function displayCalendar(root) {
         displayMonth--;
         tab.innerHTML = "";
         month--;
-        if  (month<0) {
+        if (month < 0) {
             month = 11;
             year--;
         }
@@ -374,13 +374,13 @@ function displayCalendar(root) {
         trYear.innerText = year;
         pMonth.textContent = tabMonth[month];
     });
-    
+
     trMonth.appendChild(btnPre);
     pMonth.className = "d-flex align-items-center";
     trMonth.appendChild(pMonth);
-    
-    
-    
+
+
+
     const btnNext = document.createElement('button');
     btnNext.className = "input-group-text";
     btnNext.textContent = "Suivant";
@@ -389,7 +389,7 @@ function displayCalendar(root) {
         displayMonth++;
         tab.innerHTML = "";
         month++;
-        if  (month>11) {
+        if (month > 11) {
             month = 0;
             year++;
         }
@@ -397,14 +397,14 @@ function displayCalendar(root) {
         trYear.innerText = year;
         pMonth.textContent = tabMonth[month];
     });
-    
-    
-    
+
+
+
     // let trEsp = document.createElement('tr');
     // divInputGroup.appendChild(trEsp);
     divInputGroup.appendChild(tab);
-    
-   
+
+
     createTab(tabMonth, displayMonth, tab, pMonth, year, month);
 
 }
@@ -412,9 +412,9 @@ function displayCalendar(root) {
 
 function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
     let date = new Date();
-    let dayCount=1;
-    let nbDayMonth = new Date(date.getFullYear(),date.getMonth()+1+disMonth,0).getDate();
-    let monthDay = new Date(date.getFullYear(),date.getMonth()+disMonth).getDay();
+    let dayCount = 1;
+    let nbDayMonth = new Date(date.getFullYear(), date.getMonth() + 1 + disMonth, 0).getDate();
+    let monthDay = new Date(date.getFullYear(), date.getMonth() + disMonth).getDay();
     let tr;
     let td;
     let currentDate = new Date(date.getFullYear(), date.getMonth(), dayCount);
@@ -428,35 +428,35 @@ function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
         tdDays.style.border = "2px black solid";
         trDays.appendChild(tdDays);
         tdDays.innerText = day[i];
-        
+
     }
     for (let i = 0; i < 42; i++) {
-        if (i===0 || (i)%7===0) {
+        if (i === 0 || (i) % 7 === 0) {
             tr = document.createElement('tr');
             tab.appendChild(tr);
         }
         td = document.createElement('td');
         td.className = 'text-center p-1';
         tr.appendChild(td);
-        if (i===monthDay) {
+        if (i === monthDay) {
             td.textContent = dayCount;
             grisDate(td, currentDate);
             currentDate = new Date(year, month, dayCount);
             monthDay++;
-            dayCount++; 
+            dayCount++;
         }
-        if (dayCount>nbDayMonth) {
+        if (dayCount > nbDayMonth) {
             break;
         }
     }
 
     pMonth.textContent = tabMonth[date.getMonth()];
-        
+
 }
 // createTab();
 
 function grisDate(e, currentDate) {
-    
+
     let datesReservations = [];
     let acceptedReservations = reservations.filter(reservations => reservations.status === 'accepted');
     let tabDate = [];
@@ -464,26 +464,26 @@ function grisDate(e, currentDate) {
         tabDate = [];
         tabDate.push(acceptedReservations[i].beginDate);
         tabDate.push(acceptedReservations[i].endDate);
-        
-        datesReservations.push(tabDate); 
+
+        datesReservations.push(tabDate);
     }
 
     // let dateAccepted = SelectDateAccepted(acceptedReservations);
     for (let j = 0; j < datesReservations.length; j++) {
         let currentDateBegin = new Date(datesReservations[j][0]);
-        currentDateBegin.setHours(0,0,0);
-        
-        let currentDateEnd = new Date(datesReservations[j][1]);
-        currentDateEnd.setHours(0,0,0);
+        currentDateBegin.setHours(0, 0, 0);
 
-        if (currentDate >= currentDateBegin && currentDate <= currentDateEnd ) {
+        let currentDateEnd = new Date(datesReservations[j][1]);
+        currentDateEnd.setHours(0, 0, 0);
+
+        if (currentDate >= currentDateBegin && currentDate <= currentDateEnd) {
             e.classList.add("bg-secondary-subtle");
-            e.setAttribute('style','background-color:black');
-            
+            e.setAttribute('style', 'background-color:black');
+
         }
     }
-    
-    
+
+
 }
 
 // formulaire réponse pop-up
@@ -492,7 +492,7 @@ function grisDate(e, currentDate) {
 function generateRetMessage(Message) {
     // if(document.getElementById('co-div')){document.getElementById('co-div').remove();}
     const reDiv = document.createElement('div');
-    reDiv.id='re-div';
+    reDiv.id = 're-div';
     reDiv.classList.add('position-fixed', 'translate-middle', 'top-50', 'start-50', 'co-div');
     document.body.appendChild(reDiv);
 
@@ -500,10 +500,10 @@ function generateRetMessage(Message) {
     // button.innerText = "X";
     // button.className = "bg-danger"
     // reDiv.appendChild(button);
-   
+
     let form = document.createElement('form');
     form.className = 'form-signin p-3 rounded co-div bg-light border border-2 border-black';
-    form.setAttribute('style','position:relative; z-index:666');
+    form.setAttribute('style', 'position:relative; z-index:666');
     reDiv.appendChild(form);
 
     let divHeader = document.createElement('div');
@@ -511,10 +511,10 @@ function generateRetMessage(Message) {
 
     let button = document.createElement('button');
     button.innerText = "X";
-    button.className = "bg-danger"
+    button.className = "bg-danger";
     divHeader.appendChild(button);
-    button.addEventListener('click',closeRetMessage);
-   
+    button.addEventListener('click', closeRetMessage);
+
     let h1 = document.createElement('h1');
     h1.className = "co-div h3 mb-3 fw-normal";
     h1.textContent = "Répondre au message";
@@ -530,7 +530,7 @@ function generateRetMessage(Message) {
     labelMessage.innerText = "Message :";
     labelMessage.setAttribute("for", "info");
 
-    let pMessage = document.createElement('p'); 
+    let pMessage = document.createElement('p');
     pMessage.innerText = Message;
     divMessage.appendChild(pMessage);
 
@@ -556,20 +556,20 @@ function generateRetMessage(Message) {
     button.addEventListener('click', () => {
         alert('Message envoyé');
         // envoyer message au client via mail
-    })
+    });
 
-   
+
 }
-   
-  function closeRetMessage() {
+
+function closeRetMessage() {
     document.getElementById('re-div').remove();
-    const blurTable=[];
+    const blurTable = [];
     blurTable.push(document.getElementById('header-id'));
     blurTable.push(document.getElementById('nav-id'));
     blurTable.push(document.getElementById('main-id'));
     blurTable.push(document.getElementById('footer-id'));
     for (let i = 0; i < blurTable.length; i++) {
-    blurTable[i].style.filter= 'blur(0px)';          
+        blurTable[i].style.filter = 'blur(0px)';
     }
-  }
+}
 

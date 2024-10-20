@@ -1,9 +1,9 @@
 const rootColors = {
-    "--A-text" :        "#774E24",
-    "--A-background" :  "#FFFFB3",
-    "--A-primary" :     "#6E0D25",
-    "--A-secondary" :   "#DCAB6B",
-    "--A-accent" :      "#6A381F"
+    "--text" :        "#774E24",
+    "--background" :  "#FFFFB3",
+    "--primary" :     "#6E0D25",
+    "--secondary" :   "#DCAB6B",
+    "--accent" :      "#6A381F"
 };
 
 // Sets the color values globally
