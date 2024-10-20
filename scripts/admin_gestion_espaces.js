@@ -270,4 +270,3 @@ function generateMainAdminSpaceManagement(space){// arg take spaceName[i];
     innerDivGMASM22.append(innerDivGMASM27,innerDivGMASM30);
 
 }
-generateMainAdminSpaceManagement(0,0);

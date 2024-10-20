@@ -55,6 +55,7 @@
         const formResaLink = document.createElement("a");
         formResaLink.className = "nav-link";
         formResaLink.href = "#";
+        formResaLink.addEventListener('click',gestionResaGeneration);
         // formLink0.addEventListener("click", () => {
         //     gestionDesResa();
         // });
@@ -91,6 +92,9 @@
         espLink.className = "dropdown-item";
         formLink.className = "dropdown-item";
         espLink.href = "#";
+        espLink.addEventListener('click',()=>{
+            generateMainAdminSpaceManagement(0,0);
+        });
         // roomLink0.addEventListener("click", () => {
         //     gestionDesEspaces();
         // });
