@@ -13,9 +13,9 @@ function makeFormContact() {
     mainTitle.setAttribute("class", "titleContact");
 
     let secondTitle = document.createElement("h5");
-    mainContact.appendChild(secondTitle);
     secondTitle.innerText = "Contactez-nous";
     secondTitle.setAttribute("class", "titleContact");
+    mainContact.appendChild(secondTitle);
 
     let titleContact = document.getElementsByClassName("titleContact");
     for (let elements of titleContact) {
@@ -29,9 +29,9 @@ function makeFormContact() {
     // Creating the Form element :
 
     let formContact = document.createElement("form");
-    mainContact.appendChild(formContact);
     formContact.setAttribute("method", "GET");
     formContact.setAttribute("class", "formC");
+    mainContact.appendChild(formContact);
 
 
     ///////////////////////////////////////////////////////
@@ -40,47 +40,47 @@ function makeFormContact() {
     // Creating the divs for names :
 
     let divFirstRow = document.createElement("div");
-    formContact.appendChild(divFirstRow);
     divFirstRow.setAttribute("class", "row strong")
+    formContact.appendChild(divFirstRow);
 
         // Div for Last name :
 
     let divLastName = document.createElement("div");
-    divFirstRow.appendChild(divLastName);
     divLastName.setAttribute("class", "col display")
+    divFirstRow.appendChild(divLastName);
 
     let labelLastName = document.createElement("label");
-    divLastName.appendChild(labelLastName);
     labelLastName.innerText = "Nom*";
     labelLastName.setAttribute("for", "last_name");
+    divLastName.appendChild(labelLastName);
 
     let inputLastName = document.createElement("input");
-    divLastName.appendChild(inputLastName);
     inputLastName.setAttribute("type", "text");
     inputLastName.setAttribute("name", "nom");
     inputLastName.setAttribute("id", "last_name");
     inputLastName.setAttribute("placeholder", "Entrez votre nom");
     inputLastName.setAttribute("required", "");
+    divLastName.appendChild(inputLastName);
 
 
         // Div for First name :
 
     let divFirstName = document.createElement("div");
-    divFirstRow.appendChild(divFirstName);
     divFirstName.setAttribute("class", "col display");
+    divFirstRow.appendChild(divFirstName);
 
     let labelFirstName = document.createElement("label");
-    divFirstName.appendChild(labelFirstName);
     labelFirstName.innerText = "Prénom*";
     labelFirstName.setAttribute("for", "first_name");
+    divFirstName.appendChild(labelFirstName);
 
     let inputFirstName = document.createElement("input");
-    divFirstName.appendChild(inputFirstName);
     inputFirstName.setAttribute("type", "text");
     inputFirstName.setAttribute("name", "prénom");
     inputFirstName.setAttribute("id", "first_name");
     inputFirstName.setAttribute("placeholder", "Entrez votre prénom");
     inputFirstName.setAttribute("required", "");
+    divFirstName.appendChild(inputFirstName);
 
 
     ///////////////////////////////////////////////////////
@@ -89,47 +89,47 @@ function makeFormContact() {
     // Creating the divs for phone and mail :
 
     let divSecondRow = document.createElement("div");
-    formContact.appendChild(divSecondRow);
     divSecondRow.setAttribute("class", "row segment strong")
+    formContact.appendChild(divSecondRow);
 
         // Div for Phone :
 
     let divPhone = document.createElement("div");
-    divSecondRow.appendChild(divPhone);
     divPhone.setAttribute("class", "col display")
+    divSecondRow.appendChild(divPhone);
 
     let labelPhone = document.createElement("label");
-    divPhone.appendChild(labelPhone);
     labelPhone.innerText = "Téléphone*";
     labelPhone.setAttribute("for", "phone");
+    divPhone.appendChild(labelPhone);
 
     let inputPhone = document.createElement("input");
-    divPhone.appendChild(inputPhone);
     inputPhone.setAttribute("type", "text");
     inputPhone.setAttribute("name", "téléphone");
     inputPhone.setAttribute("id", "phone");
     inputPhone.setAttribute("placeholder","Entrez votre numéro de téléphone");
     inputPhone.setAttribute("required", "");
+    divPhone.appendChild(inputPhone);
 
 
         // Div for Mail :
 
     let divMail = document.createElement("div");
-    divSecondRow.appendChild(divMail);
     divMail.setAttribute("class", "col display");
+    divSecondRow.appendChild(divMail);
 
     let labelMail = document.createElement("label");
-    divMail.appendChild(labelMail);
     labelMail.innerText = "Adresse mail*";
     labelMail.setAttribute("for", "mail");
+    divMail.appendChild(labelMail);
 
     let inputMail = document.createElement("input");
-    divMail.appendChild(inputMail);
     inputMail.setAttribute("type", "text");
     inputMail.setAttribute("name", "email");
     inputMail.setAttribute("id", "mail");
     inputMail.setAttribute("placeholder", "Entrez votre adresse mail");
     inputMail.setAttribute("required", "");
+    divMail.appendChild(inputMail);
 
 
     ///////////////////////////////////////////////////////
@@ -138,94 +138,95 @@ function makeFormContact() {
     // Creating the div for object :
 
     let divThirdRow = document.createElement("div");
-    formContact.appendChild(divThirdRow);
     divThirdRow.setAttribute("class", "segment strong display")
+    formContact.appendChild(divThirdRow);
 
     let labelObject = document.createElement("label");
-    divThirdRow.appendChild(labelObject);
     labelObject.innerText = "Objet";
     labelObject.setAttribute("for", "object");
+    divThirdRow.appendChild(labelObject);
 
     let selectObject = document.createElement("select");
-    divThirdRow.appendChild(selectObject);
     selectObject.setAttribute("id", "object");
-
+    divThirdRow.appendChild(selectObject);
+    
+    
+    let optionObject0 = document.createElement("option");
+    optionObject0.innerText = "Sélectionnez l'objet du message";
+    selectObject.appendChild(optionObject0);
+    
     let optionObject1 = document.createElement("option");
+    optionObject1.innerText = "Nos formules";
     selectObject.appendChild(optionObject1);
-    optionObject1.innerText = "Sélectionnez l'objet du message";
-
+    
     let optionObject2 = document.createElement("option");
+    optionObject2.innerText = "Nos espaces";
     selectObject.appendChild(optionObject2);
-    optionObject2.innerText = "Nos formules";
-
+    
     let optionObject3 = document.createElement("option");
+    optionObject3.innerText = "Nos services";
     selectObject.appendChild(optionObject3);
-    optionObject3.innerText = "Nos espaces";
-
+    
     let optionObject4 = document.createElement("option");
+    optionObject4.innerText = "Nos tarifs";
     selectObject.appendChild(optionObject4);
-    optionObject4.innerText = "Nos services";
-
+    
     let optionObject5 = document.createElement("option");
+    optionObject5.innerText = "Autre";
     selectObject.appendChild(optionObject5);
-    optionObject5.innerText = "Nos tarifs";
-
-    let optionObject6 = document.createElement("option");
-    selectObject.appendChild(optionObject6);
-    optionObject6.innerText = "Autre";
-
-
+    
+    
     ///////////////////////////////////////////////////////
-
-
+    
+    
     // Creating the div for message :
-
+    
     let divFourthRow = document.createElement("div");
-    formContact.appendChild(divFourthRow);
     divFourthRow.setAttribute("class", "segment strong display");
-
+    formContact.appendChild(divFourthRow);
+    
     let labelMessage = document.createElement("label");
-    divFourthRow.appendChild(labelMessage);
     labelMessage.innerText = "Votre message";
     labelMessage.setAttribute("for", "info");
-
+    divFourthRow.appendChild(labelMessage);
+    
     let textAreaMessage = document.createElement("textarea");
-    divFourthRow.appendChild(textAreaMessage);
     textAreaMessage.setAttribute("id", "info");
     textAreaMessage.setAttribute("row", "10");
     textAreaMessage.setAttribute("col", "100");
-
-
+    divFourthRow.appendChild(textAreaMessage);
+    
+    
     ///////////////////////////////////////////////////////
-
-
+    
+    
     // Creating the mandatory message :
-
+    
     let warning = document.createElement("p");
-    formContact.appendChild(warning);
     warning.setAttribute("class", "mandatory");
     warning.innerText = "Les champs suivis d'un * sont obligatoires";
-
-
+    formContact.appendChild(warning);
+    
+    
     ///////////////////////////////////////////////////////
-
-
+    
+    
     // Creating the div for Button :
-
+    
     let divButton = document.createElement("div");
-    formContact.appendChild(divButton);
     divButton.setAttribute("class", "send");
-
+    formContact.appendChild(divButton);
+    
     let inputButton = document.createElement("input");
-    divButton.appendChild(inputButton);
     inputButton.setAttribute("type", "submit");
     inputButton.setAttribute("id", "send");
     inputButton.setAttribute("value", "Envoyer");
-
-
+    divButton.appendChild(inputButton);
+    
+    
     ///////////////////////////////////////////////////////
-
-
+    
+    
     // Styling :
 
     let formC = document.getElementsByClassName("formC");
@@ -266,6 +267,22 @@ function makeFormContact() {
         elements.style.justifyContent = "center";
     }
 
+
+    ///////////////////////////////////////////////////////
+
+
+    // Sending values of the formula when clicking on "Envoyer"
+
+    formContact.addEventListener("submit", function() {
+        
+        let demandeInfos = [];
+        demandeInfos.push(inputLastName.value, inputFirstName.value, inputMail.value, inputPhone.value, selectObject.value, textAreaMessage.value);
+        
+    });
+
+
+
 }
+
 
 makeFormContact();
