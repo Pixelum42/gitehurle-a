@@ -1,6 +1,6 @@
 const adminLog = {
-    "username": "admin",
-    "password": "admin"
+    "username": "beweb",
+    "password": "2024"
 };
 
 const makeNav = () => {
@@ -21,9 +21,9 @@ const makeNav = () => {
     brand.className = "navbar-brand active";
     brand.setAttribute("aria-current", "page");
     brand.href = "#";
-    // roomLink0.addEventListener("click", () => {
-    // generateClient_Accueil();
-    // });
+    brand.addEventListener("click", () => {
+        generateClient_Accueil();
+    });
     brand.style.color = rootColors["--text"];
     brand.innerText = "Le Gîte Hurle";
     brandDiv.appendChild(brand);
@@ -76,18 +76,22 @@ const makeNav = () => {
     roomLink0.className = "dropdown-item";
     roomLink1.className = "dropdown-item";
     roomLink2.className = "dropdown-item";
-    roomLink0.href = "#";
-    // roomLink0.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[0]);
-    // });
-    roomLink1.href = "#";
-    // roomLink1.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[1]);
-    // });
-    roomLink2.href = "#";
-    // roomLink2.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[2]);
-    // });
+
+    roomLink0.href = "#main-id";
+    roomLink0.addEventListener("click", () => {
+        displayRoomDetails(rooms[0]);
+        roomLink0.setAttribute("scroll-margin-top", "2em");
+    });
+    roomLink1.href = "#main-id";
+    roomLink1.addEventListener("click", () => {
+        displayRoomDetails(rooms[1]);
+        roomLink1.setAttribute("scroll-margin-top", "2em");
+    });
+    roomLink2.href = "#main-id";
+    roomLink2.addEventListener("click", () => {
+        displayRoomDetails(rooms[2]);
+        roomLink2.setAttribute("scroll-margin-top", "2em");
+    });
     roomLink0.style.color = rootColors["--text"];
     roomLink1.style.color = rootColors["--text"];
     roomLink2.style.color = rootColors["--text"];
@@ -289,7 +293,7 @@ const makeFooter = () => {
     footer.className = "container";
 
     const footerDiv = document.createElement("div");
-    footerDiv.className = "d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top";
+    footerDiv.className = "d-flex flex-wrap justify-content-between align-items-center py-3 my-2 border-top";
     footer.appendChild(footerDiv);
 
     const footerCopyrightDiv = document.createElement("div");
@@ -340,6 +344,12 @@ const makeFooter = () => {
     contactLink.className = "nav-link";
     contactLink.id = "contact";
     contactLink.href = "#";
+
+    contactLink.addEventListener("mouseenter", () => { contactLink.style.color = rootColors["--primary"]; });
+    contactLink.addEventListener("mouseleave", () => { contactLink.style.color = rootColors["--text"]; });
+    contactLink.addEventListener("click", () => {
+        makeFormContact();
+    });
     contactLink.style.color = rootColors["--text"];
     contactLink.innerText = "Contact";
     contactItem.appendChild(contactLink);
@@ -365,6 +375,7 @@ function defineElementColors() {
 const generateStructure = () => {
     makeNav();
     makeHeader();
+    generateClient_Accueil();
     makeFooter();
 
     defineElementColors();

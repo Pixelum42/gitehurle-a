@@ -1,24 +1,20 @@
-const main = document.getElementById('main-id');
-
-// Fonction pour afficher les détails d'une chambre avec le carousel centré à gauche
 function displayRoomDetails(room) {
+    const main = document.getElementById('main-id');
     main.innerHTML = '';
 
     const chambreDiv = document.createElement('div');
     chambreDiv.classList.add('chambre');
-    chambreDiv.style.margin = '20px';
+    chambreDiv.style.margin = '4em 1em 2em 1em';
     chambreDiv.style.display = 'flex';
-    chambreDiv.style.alignItems = 'center';
-    chambreDiv.style.gap = '20px';
+    chambreDiv.style.columnGap = '2em';
 
-    // Carousel d'images (à gauche, centré)
     const carouselDiv = document.createElement('div');
     carouselDiv.classList.add('carousel');
     carouselDiv.style.position = 'relative';
     carouselDiv.style.width = '50%';
-    carouselDiv.style.height = '400px';
+    carouselDiv.style.height = '30em';
     carouselDiv.style.overflow = 'hidden';
-    carouselDiv.style.marginBottom = '20px';
+    carouselDiv.style.marginBottom = '1em';
 
     let currentImageIndex = 0;
 
@@ -34,12 +30,13 @@ function displayRoomDetails(room) {
     prevArrow.textContent = '<';
     prevArrow.style.position = 'absolute';
     prevArrow.style.top = '50%';
-    prevArrow.style.left = '10px';
+    prevArrow.style.left = '0.5em';
     prevArrow.style.transform = 'translateY(-50%)';
-    prevArrow.style.fontSize = '2em';
+    prevArrow.style.fontSize = '3em';
+    prevArrow.style.fontWeight = "bold";
     prevArrow.style.background = 'none';
     prevArrow.style.border = 'none';
-    prevArrow.style.color = 'white';
+    prevArrow.style.color = rootColors["--primary"];
     prevArrow.style.cursor = 'pointer';
     carouselDiv.appendChild(prevArrow);
 
@@ -47,12 +44,13 @@ function displayRoomDetails(room) {
     nextArrow.textContent = '>';
     nextArrow.style.position = 'absolute';
     nextArrow.style.top = '50%';
-    nextArrow.style.right = '10px';
+    nextArrow.style.right = '0.5em';
     nextArrow.style.transform = 'translateY(-50%)';
-    nextArrow.style.fontSize = '2em';
+    nextArrow.style.fontSize = '3em';
+    nextArrow.style.fontWeight = "bold";
     nextArrow.style.background = 'none';
     nextArrow.style.border = 'none';
-    nextArrow.style.color = 'white';
+    nextArrow.style.color = rootColors["--primary"];
     nextArrow.style.cursor = 'pointer';
     carouselDiv.appendChild(nextArrow);
 
@@ -61,46 +59,58 @@ function displayRoomDetails(room) {
         currentImageIndex = (currentImageIndex - 1 + room.images.length) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
     });
-
     nextArrow.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex + 1) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
     });
+    
+    setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % room.images.length;
+        carouselImage.src = room.images[currentImageIndex];
+    }, 2000);
+
 
     chambreDiv.appendChild(carouselDiv);
 
 
     const detailsDiv = document.createElement('div');
-    // Prendre tout l'espace disponible
     detailsDiv.style.flex = '1';
 
     const titre = document.createElement('h2');
     titre.textContent = room.nom;
+    titre.style.color = rootColors["--accent"];
     detailsDiv.appendChild(titre);
 
     const description = document.createElement('p');
+    description.style.fontSize = '1em';
     description.textContent = room.description;
+    description.style.fontWeight = "400";
+    description.style.color = rootColors["--text"];
     detailsDiv.appendChild(description);
 
-    // Ajouter les informations sous la description à droite
     const infoSection = document.createElement('div');
-    infoSection.style.marginTop = '20px';
+    infoSection.style.marginTop = '2em';
     infoSection.style.display = 'block';
-
+    
     const info = document.createElement('p');
     info.textContent = `Prix: ${room.prix} € / Nuit`;
+    info.style.fontSize = '1em';
+    info.style.fontWeight = "400";
+    info.style.color = rootColors["--primary"];
     infoSection.appendChild(info);
 
     const descriptionSup = document.createElement('p');
+    descriptionSup.style.fontSize = '1em';
     descriptionSup.textContent = room.descriptionSup;
     infoSection.appendChild(descriptionSup);
 
     const formulesDiv = document.createElement('div');
-    formulesDiv.style.marginTop = '10px';
-
-    // Ajouter les descriptions complètes des formules, sans afficher "weekend d'amour" pour certaines chambres
+    formulesDiv.style.marginTop = '1em';
+    
+    // Ajoute les descriptions complètes des formules, sans afficher "weekend d'amour" pour certaines chambres
+    const formuleInfo = document.createElement('p');
+    formuleInfo.style.fontSize = '1em';
     room.formules.forEach(formule => {
-        const formuleInfo = document.createElement('p');
         switch (formule) {
             case "weekend d'amour":
                 formuleInfo.textContent = "Vivez une expérience amoureuse unique grâce à notre formule Weekend d’amour ! Bénéficiez d'une remise de 10 % sur le total de vos nuitées, tout en savourant un petit déjeuner « lover » servi dans le confort de votre lit. Réveillez-vous en douceur et créez des souvenirs mémorables ensemble !";
@@ -114,27 +124,28 @@ function displayRoomDetails(room) {
             default:
                 formuleInfo.textContent = `Formule : ${formule}`;
         }
+        formuleInfo.style.fontWeight = "400";
+        formuleInfo.style.color = rootColors["--text"];
         formulesDiv.appendChild(formuleInfo);
     });
 
     infoSection.appendChild(formulesDiv);
 
-    // Ajouter le bouton de réservation
     const reservationButton = document.createElement('button');
     reservationButton.textContent = 'Réserver';
     reservationButton.style.padding = '10px 15px';
-    reservationButton.style.backgroundColor = '#28a745';
-    reservationButton.style.color = 'white';
+    reservationButton.style.backgroundColor = rootColors["--accent"];
+    reservationButton.style.color = rootColors["--background"];
     reservationButton.style.border = 'none';
     reservationButton.style.borderRadius = '5px';
     reservationButton.style.cursor = 'pointer';
 
-    // reservationButton.addEventListener('click', (event) => {
-    //     makeFormBook(room.id); 
-    // });
+    reservationButton.addEventListener('click', (event) => {
+        makeFormBook(room.id);
+    });
+
     infoSection.appendChild(reservationButton);
 
-    // Ajouter la description et les infos dans le div de détails
     detailsDiv.appendChild(infoSection);
     chambreDiv.appendChild(detailsDiv);
 

@@ -16,9 +16,10 @@ function makeNavAdmin() {
     brand.className = "navbar-brand active";
     brand.setAttribute("aria-current", "page");
     brand.href = "#";
-    // roomLink0.addEventListener("click", () => {
-    // generateClient_Accueil();
-    // });
+    brand.addEventListener("click", () => {
+        generateStructure();
+        generateClient_Accueil();
+    });
     brand.style.color = rootColors["--text"];
     brand.innerText = "Le Gîte Hurle";
     brandDiv.appendChild(brand);
