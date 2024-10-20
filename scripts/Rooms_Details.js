@@ -1,11 +1,13 @@
+const main = document.getElementById('main-id');
+
 // Fonction pour afficher les détails d'une chambre avec le carousel centré à gauche
 function displayRoomDetails(room) {
-    containerRooms.innerHTML = ''; // Effacer l'aperçu
+    main.innerHTML = '';
 
     const chambreDiv = document.createElement('div');
     chambreDiv.classList.add('chambre');
     chambreDiv.style.margin = '20px';
-    chambreDiv.style.display = 'flex';  
+    chambreDiv.style.display = 'flex';
     chambreDiv.style.alignItems = 'center';
     chambreDiv.style.gap = '20px';
 
@@ -13,7 +15,7 @@ function displayRoomDetails(room) {
     const carouselDiv = document.createElement('div');
     carouselDiv.classList.add('carousel');
     carouselDiv.style.position = 'relative';
-    carouselDiv.style.width = '50%'; // Le carousel prend 50% de la largeur
+    carouselDiv.style.width = '50%';
     carouselDiv.style.height = '400px';
     carouselDiv.style.overflow = 'hidden';
     carouselDiv.style.marginBottom = '20px';
@@ -54,7 +56,7 @@ function displayRoomDetails(room) {
     nextArrow.style.cursor = 'pointer';
     carouselDiv.appendChild(nextArrow);
 
-  
+
     prevArrow.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex - 1 + room.images.length) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
@@ -65,11 +67,12 @@ function displayRoomDetails(room) {
         carouselImage.src = room.images[currentImageIndex];
     });
 
-    chambreDiv.appendChild(carouselDiv);  
+    chambreDiv.appendChild(carouselDiv);
 
-    
+
     const detailsDiv = document.createElement('div');
-    detailsDiv.style.flex = '1';  // Prendre tout l'espace disponible
+    // Prendre tout l'espace disponible
+    detailsDiv.style.flex = '1';
 
     const titre = document.createElement('h2');
     titre.textContent = room.nom;
@@ -126,14 +129,14 @@ function displayRoomDetails(room) {
     reservationButton.style.borderRadius = '5px';
     reservationButton.style.cursor = 'pointer';
 
-    reservationButton.addEventListener('click', (event) => {
-        makeFormBook(room.id); 
-    });
+    // reservationButton.addEventListener('click', (event) => {
+    //     makeFormBook(room.id); 
+    // });
     infoSection.appendChild(reservationButton);
 
     // Ajouter la description et les infos dans le div de détails
     detailsDiv.appendChild(infoSection);
     chambreDiv.appendChild(detailsDiv);
 
-    containerRooms.appendChild(chambreDiv);
+    main.appendChild(chambreDiv);
 }
