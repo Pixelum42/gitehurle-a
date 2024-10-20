@@ -228,6 +228,7 @@ function generateConnexion() {
     input.id = "floatingPassword";
     input.placeholder = "Password";
     input.className = "co-div form-control";
+    input.setAttribute("autocomplete", "off");
     div.appendChild(input);
 
     label = document.createElement('label');
