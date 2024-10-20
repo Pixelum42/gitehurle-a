@@ -150,9 +150,9 @@ const makeNav = () => {
     
     formLink1.addEventListener("mouseenter", () => { formLink1.style.color = rootColors["--primary"]; });
     formLink1.addEventListener("mouseleave", () => { formLink1.style.color = rootColors["--text"]; });
-    // formLink1.addEventListener("click", () => {
-    //     makeFormContact();
-    // });
+    formLink1.addEventListener("click", () => {
+        makeFormContact();
+    });
     formLink1.innerText = "Contact";
     formItem1.appendChild(formLink1);
 

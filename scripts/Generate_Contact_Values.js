@@ -2,24 +2,24 @@
 // Putting the values of the formula in an associative array
 
 
-let demandeInfos = [];
+let messages = [];
 
 const demandeInfo = (nom,  prenom, email, telephone, objet, message) => {
 
-    nom = inputLastName.value;
-    prenom = inputFirstName.value;
-    email = inputMail.value;
-    telephone = inputPhone.value;
-    objet = selectObject.value;
-    message = textAreaMessage.value;
+    // nom = inputLastName.value;
+    // prenom = inputFirstName.value;
+    // email = inputMail.value;
+    // telephone = inputPhone.value;
+    // objet = selectObject.value;
+    // message = textAreaMessage.value;
 
     return {
-
+    "status": "pending",
+    "objet" : objet,
     "nom" : nom,
     "prenom" : prenom,
-    "email" : email,
+    "mail" : email,
     "telephone" : telephone,
-    "objet" : objet,
     "message" : message,
 
     }

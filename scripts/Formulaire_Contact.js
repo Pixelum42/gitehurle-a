@@ -218,7 +218,7 @@ function makeFormContact() {
     formContact.appendChild(divButton);
     
     let inputButton = document.createElement("input");
-    inputButton.setAttribute("type", "submit");
+    inputButton.setAttribute("type", "button");
     inputButton.setAttribute("id", "send");
     inputButton.setAttribute("value", "Envoyer");
     divButton.appendChild(inputButton);
@@ -273,10 +273,12 @@ function makeFormContact() {
 
     // Sending values of the formula when clicking on "Envoyer"
 
-    formContact.addEventListener("submit", function() {
+    inputButton.addEventListener("click", () => {
         
-        let demandeInfos = [];
-        demandeInfos.push(inputLastName.value, inputFirstName.value, inputMail.value, inputPhone.value, selectObject.value, textAreaMessage.value);
+    //    messages.push(demandeInfo("1","2","3","4","5","6"));
+        messages.push(demandeInfo(inputLastName.value, inputFirstName.value, inputMail.value, inputPhone.value, selectObject.value, textAreaMessage.value));
+
+        console.log(messages);
         
     });
 
@@ -285,4 +287,4 @@ function makeFormContact() {
 }
 
 
-makeFormContact();
+// makeFormContact();

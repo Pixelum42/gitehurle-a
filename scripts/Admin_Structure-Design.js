@@ -141,15 +141,15 @@ function makeNavAdmin() {
     const contactLink1 = document.createElement("a");
     contactLink1.className = "nav-link";
     contactLink1.href = "#";
-    // formLink1.addEventListener("click", () => {
-    //     makeFormContact();
-    // });
     contactLink1.innerText = "Contact";
     contactLink1.addEventListener("mouseenter", () => {
         contactLink1.style.color = rootColors["--primary"];
     });
     contactLink1.addEventListener("mouseleave", () => {
         contactLink1.style.color = rootColors["--text"];
+    });
+    contactLink1.addEventListener("click", () => {
+        listMessage();
     });
     contactItem.appendChild(contactLink1);
 
