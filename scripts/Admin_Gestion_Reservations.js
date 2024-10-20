@@ -22,34 +22,15 @@ let messageFac = "Les gens, n'est-ce pas ? THE SOFTWARE IS PROVIDED AS IS AND TH
 
 let reservations = [
 
-    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    { "status": 'pending', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
+    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
+    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "familial", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
+    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "appartement", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
     { "status": 'refused', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac, 'prix': 'prix' },
     { "status": 'pending', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac }
 
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'refused', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'accepted', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'refused', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'accepted', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'refused', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'accepted', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac },
-    // { "status": 'pending', "espace": chambre, 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac }
 ];
 
-
+// creation base main page
 function gestionResaGeneration() {
     let main = document.getElementById('main-id');
     main.innerHTML = "";
@@ -67,14 +48,17 @@ function gestionResaGeneration() {
     divRow.className = 'row';
     divResaList.appendChild(divRow);
 
-    // tabTri();
+
+    
     creationResa(divRow);
     displayCalendar(divRoot);
-    // createTab();
+
 
 }
 
 
+
+// tri des reservations en fonction de leurs dates et leur status
 function tabTri() {
     let dateQILDDLDDLR = [];
     for (let i = 0; i < reservations.length; i++) {
@@ -117,12 +101,12 @@ function tabTri() {
     reservations.push(...reservationSorted[1]);
     reservations.push(...reservationSorted[2]);
 }
-// tabTri();
 
 
 
 
 
+// génération des cases pour chaque réservation
 function creationResa(row) {
     tabTri();
     for (let i = 0; i < reservations.length; i++) {
@@ -143,7 +127,7 @@ function creationResa(row) {
 
         divResa[i] = document.createElement('div');
         divEntResa.appendChild(divResa[i]);
-        // divResa[i].className = 'div-resa';
+
 
 
         let divButton = document.createElement('div');
@@ -164,6 +148,7 @@ function creationResa(row) {
             acceptButton.disabled = true;
             refuseButton.disabled = false;
             alert('Réservation acceptée !');
+
             gestionResaGeneration();
         });
 
@@ -186,7 +171,17 @@ function creationResa(row) {
 
         let resaH = document.createElement('h4');
         divResa[i].appendChild(resaH);
+        resaH.className = "fw-bold";
         resaH.innerText = reservations[i].espace;
+        if (reservations[i].espace === 'chambre') {
+            resaH.setAttribute('style', 'color: darkturquoise');
+        } else if (reservations[i].espace === 'familial') {
+            resaH.setAttribute('style', 'color: magenta');
+
+        } else {
+            resaH.setAttribute('style', 'color: darkred; ');
+
+        }
 
         let divDateForm = document.createElement('div');
         divResa[i].appendChild(divDateForm);
@@ -215,7 +210,6 @@ function creationResa(row) {
 
         switch (reservations[i].status) {
             case 'pending':
-                // divEntResa.style.border = '3px solid orange';
                 divTrResa.innerText = "Réservation en attente";
                 divTrResa.classList.add('bg-warning');
                 divEntResa.classList.add('border', 'border-warning', 'rounded', 'border-2');
@@ -245,9 +239,9 @@ function creationResa(row) {
 
 
 }
-// creationResa();
 
 
+// option afficher la réservation
 function addInfo(i, divResa) {
 
     let divInfo = document.createElement('div');
@@ -267,7 +261,7 @@ function addInfo(i, divResa) {
     divInfo.appendChild(p);
     p.innerText = reservations[i].telephone;
     let pMes = document.createElement('p');
-    // p.id = `message-id-${i}`;
+
     divInfo.appendChild(pMes);
     pMes.innerText = "Message : " + reservations[i].message;
 
@@ -293,16 +287,13 @@ function addInfo(i, divResa) {
         for (let i = 0; i < blurTable.length; i++) {
             blurTable[i].style.filter = 'blur(4px)';
         }
-        //  document.body.classList.add('d-flex', 'justify-content-between','align-items-center')
+
         setTimeout(() => {
             generateRetMessage(reservations[i].message);
 
         }, 300);
     });
 
-
-    // aFormRetour.href = 'lien vers formulaire retour';
-    // aFormRetour.target = '_blank';
 
     let buttonBack = document.createElement('button');
     divButtonEnd.appendChild(buttonBack);
@@ -318,14 +309,14 @@ function addInfo(i, divResa) {
             addInfo(i, divResa);
             showButton.remove();
         });
-    });
+    })
 
 
 }
 
 
 
-
+// création calendrier
 function displayCalendar(root) {
     let tabMonth = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
     let displayMonth = 0;
@@ -334,20 +325,23 @@ function displayCalendar(root) {
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth();
+
     let divCalendar = document.createElement('div');
     divCalendar.className = 'div-calendar border border-dark w-75 p-5 m-5';
     root.appendChild(divCalendar);
-
-
 
     let divInputGroup = document.createElement('div');
     divInputGroup.className = "input-group d-flex flex-column";
     divCalendar.appendChild(divInputGroup);
 
+
+
     const inputGroupText = document.createElement('span');
     inputGroupText.className = "input-group-text text-center";
     inputGroupText.textContent = 'Calendrier des réservations';
     divInputGroup.appendChild(inputGroupText);
+
+
 
     let trYear = document.createElement('div');
     trYear.innerText = year;
@@ -400,8 +394,6 @@ function displayCalendar(root) {
 
 
 
-    // let trEsp = document.createElement('tr');
-    // divInputGroup.appendChild(trEsp);
     divInputGroup.appendChild(tab);
 
 
@@ -409,7 +401,7 @@ function displayCalendar(root) {
 
 }
 
-
+// création des jours dans le calendrier
 function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
     let date = new Date();
     let dayCount = 1;
@@ -436,14 +428,16 @@ function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
             tab.appendChild(tr);
         }
         td = document.createElement('td');
-        td.className = 'text-center p-1';
+        td.className = 'text-center p-1 border border-bottom';
         tr.appendChild(td);
         if (i === monthDay) {
             td.textContent = dayCount;
             grisDate(td, currentDate);
-            currentDate = new Date(year, month, dayCount);
+            currentDate = new Date(year, month, dayCount+1);
             monthDay++;
             dayCount++;
+            console.log('currentdate' ,currentDate);
+            
         }
         if (dayCount > nbDayMonth) {
             break;
@@ -453,8 +447,8 @@ function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
     pMonth.textContent = tabMonth[date.getMonth()];
 
 }
-// createTab();
 
+// filtre des réservations acceptées et met indication couleur sur le calendrier
 function grisDate(e, currentDate) {
 
     let datesReservations = [];
@@ -468,7 +462,9 @@ function grisDate(e, currentDate) {
         datesReservations.push(tabDate);
     }
 
-    // let dateAccepted = SelectDateAccepted(acceptedReservations);
+    let divSquare = document.createElement('div');
+    e.prepend(divSquare);
+    divSquare.className = 'd-flex';
     for (let j = 0; j < datesReservations.length; j++) {
         let currentDateBegin = new Date(datesReservations[j][0]);
         currentDateBegin.setHours(0, 0, 0);
@@ -476,9 +472,36 @@ function grisDate(e, currentDate) {
         let currentDateEnd = new Date(datesReservations[j][1]);
         currentDateEnd.setHours(0, 0, 0);
 
+
         if (currentDate >= currentDateBegin && currentDate <= currentDateEnd) {
-            e.classList.add("bg-secondary-subtle");
-            e.setAttribute('style', 'background-color:black');
+            console.log(currentDateBegin);
+            console.log(currentDateEnd);
+            
+            switch (acceptedReservations[j].espace) {
+                case 'chambre':
+                    let square1 = document.createElement('div');
+                    square1.setAttribute('style', 'width: 10px; height: 10px;')
+                    square1.style.backgroundColor = 'darkturquoise';
+    
+                    divSquare.prepend(square1);
+                    break;
+                    case 'familial':
+                        let square2 = document.createElement('div');
+                        square2.setAttribute('style', 'width: 10px; height: 10px;')
+                        square2.style.backgroundColor = 'magenta';
+            
+                        divSquare.prepend(square2);
+                        break;
+                        case 'appartement':
+                            let square3 = document.createElement('div');
+                            square3.setAttribute('style', 'width: 10px; height: 10px;')
+                            square3.style.backgroundColor = 'darkred';
+                
+                            divSquare.prepend(square3);
+                    break;
+                default:
+                    break;
+            }
 
         }
     }
@@ -486,20 +509,18 @@ function grisDate(e, currentDate) {
 
 }
 
+
+
+
 // formulaire réponse pop-up
 
 
 function generateRetMessage(Message) {
-    // if(document.getElementById('co-div')){document.getElementById('co-div').remove();}
     const reDiv = document.createElement('div');
     reDiv.id = 're-div';
     reDiv.classList.add('position-fixed', 'translate-middle', 'top-50', 'start-50', 'co-div');
     document.body.appendChild(reDiv);
 
-    // let button = document.createElement('button');
-    // button.innerText = "X";
-    // button.className = "bg-danger"
-    // reDiv.appendChild(button);
 
     let form = document.createElement('form');
     form.className = 'form-signin p-3 rounded co-div bg-light border border-2 border-black';
@@ -511,14 +532,14 @@ function generateRetMessage(Message) {
 
     let button = document.createElement('button');
     button.innerText = "X";
-    button.className = "bg-danger";
+    button.className = "bg-danger"
     divHeader.appendChild(button);
     button.addEventListener('click', closeRetMessage);
 
-    let h1 = document.createElement('h1');
-    h1.className = "co-div h3 mb-3 fw-normal";
-    h1.textContent = "Répondre au message";
-    divHeader.appendChild(h1);
+    let h2 = document.createElement('h2');
+    h2.className = "co-div h3 mb-3 fw-normal";
+    h2.textContent = "Répondre au message";
+    divHeader.appendChild(h2);
 
     let divMessage = document.createElement('div');
     divMessage.className = "form-floating co-div";
@@ -555,8 +576,7 @@ function generateRetMessage(Message) {
     form.appendChild(button);
     button.addEventListener('click', () => {
         alert('Message envoyé');
-        // envoyer message au client via mail
-    });
+    })
 
 
 }
