@@ -127,7 +127,7 @@ function displayRoomDetails(room) {
     reservationButton.style.cursor = 'pointer';
 
     reservationButton.addEventListener('click', (event) => {
-        makeFormBook(room); 
+        makeFormBook(room.id); 
     });
     infoSection.appendChild(reservationButton);
 
