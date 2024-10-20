@@ -22,7 +22,7 @@ const makeNav = () => {
     brand.setAttribute("aria-current", "page");
     brand.href = "#";
     // roomLink0.addEventListener("click", () => {
-    // generateClient_Accueil();
+    // ! generateClient_Accueil(); ##############################################################################
     // });
     brand.style.color = rootColors["--text"];
     brand.innerText = "Le Gîte Hurle";
@@ -76,18 +76,22 @@ const makeNav = () => {
     roomLink0.className = "dropdown-item";
     roomLink1.className = "dropdown-item";
     roomLink2.className = "dropdown-item";
-    roomLink0.href = "#";
-    // roomLink0.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[0]);
-    // });
-    roomLink1.href = "#";
-    // roomLink1.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[1]);
-    // });
-    roomLink2.href = "#";
-    // roomLink2.addEventListener("click", () => {
-    //     displayRoomDetails(rooms[2]);
-    // });
+
+    roomLink0.href = "#main-id";
+    roomLink0.addEventListener("click", () => {
+        displayRoomDetails(rooms[0]);
+        roomLink0.setAttribute("scroll-margin-top", "2em");
+    });
+    roomLink1.href = "#main-id";
+    roomLink1.addEventListener("click", () => {
+        displayRoomDetails(rooms[1]);
+        roomLink1.setAttribute("scroll-margin-top", "2em");
+    });
+    roomLink2.href = "#main-id";
+    roomLink2.addEventListener("click", () => {
+        displayRoomDetails(rooms[2]);
+        roomLink2.setAttribute("scroll-margin-top", "2em");
+    });
     roomLink0.style.color = rootColors["--text"];
     roomLink1.style.color = rootColors["--text"];
     roomLink2.style.color = rootColors["--text"];
@@ -289,7 +293,7 @@ const makeFooter = () => {
     footer.className = "container";
 
     const footerDiv = document.createElement("div");
-    footerDiv.className = "d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top";
+    footerDiv.className = "d-flex flex-wrap justify-content-between align-items-center py-3 my-2 border-top";
     footer.appendChild(footerDiv);
 
     const footerCopyrightDiv = document.createElement("div");
