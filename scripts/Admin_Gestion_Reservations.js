@@ -1,36 +1,5 @@
 
 
-let chambre = "chambre double";
-let date2;
-let date1 = () => {
-    const a = Math.round(Math.random() + 2024);
-    const m = Math.ceil(Math.random() * 12).toString().padStart(2, 0);
-    const d = Math.ceil(Math.random() * 31).toString().padStart(2, 0);
-    if (m < 12) {
-        let x = (parseInt(d) + 1).toString().padStart(2, 0);
-
-        date2 = `${a}-${m}-${x}`;
-
-    }
-    return (`${a}-${m}-${d}`);
-};
-
-
-let formule = "-10%";
-let messageFac = "Les gens, n'est-ce pas ? THE SOFTWARE IS PROVIDED AS IS AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.";
-
-
-let reservations = [
-
-    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
-    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "familial", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
-    { "status": 'accepted', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "appartement", 'beginDate': '2024-10-09', 'endDate': '2024-10-11', 'formule': formule, 'message': messageFac },
-    { "status": 'refused', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac, 'prix': 'prix' },
-    { "status": 'pending', "nom": "nom", "prenom": "prenom", "mail": "mail", "telephone": "telephone", "espace": "chambre", 'beginDate': date1(), 'endDate': date2, 'formule': formule, 'message': messageFac }
-
-];
-
-// creation base main page
 function gestionResaGeneration() {
     let main = document.getElementById('main-id');
     main.innerHTML = "";
@@ -173,9 +142,9 @@ function creationResa(row) {
         divResa[i].appendChild(resaH);
         resaH.className = "fw-bold";
         resaH.innerText = reservations[i].espace;
-        if (reservations[i].espace === 'chambre') {
+        if (reservations[i].espace === rooms[0].nom) {
             resaH.setAttribute('style', 'color: darkturquoise');
-        } else if (reservations[i].espace === 'familial') {
+        } else if (reservations[i].espace === rooms[2].nom) {
             resaH.setAttribute('style', 'color: magenta');
 
         } else {
@@ -283,7 +252,7 @@ function addInfo(i, divResa) {
         blurTable.push(document.getElementById('main-id'));
         blurTable.push(document.getElementById('footer-id'));
 
-        console.log(blurTable);
+        // console.log(blurTable);
         for (let i = 0; i < blurTable.length; i++) {
             blurTable[i].style.filter = 'blur(4px)';
         }
@@ -436,7 +405,7 @@ function createTab(tabMonth, disMonth, tab, pMonth, year, month) {
             currentDate = new Date(year, month, dayCount+1);
             monthDay++;
             dayCount++;
-            console.log('currentdate' ,currentDate);
+            // console.log('currentdate' ,currentDate);
             
         }
         if (dayCount > nbDayMonth) {
@@ -473,31 +442,35 @@ function grisDate(e, currentDate) {
         currentDateEnd.setHours(0, 0, 0);
 
 
+
         if (currentDate >= currentDateBegin && currentDate <= currentDateEnd) {
             console.log(currentDateBegin);
             console.log(currentDateEnd);
             
             switch (acceptedReservations[j].espace) {
-                case 'chambre':
+                case rooms[0].nom:
                     let square1 = document.createElement('div');
                     square1.setAttribute('style', 'width: 10px; height: 10px;')
                     square1.style.backgroundColor = 'darkturquoise';
-    
+                    
                     divSquare.prepend(square1);
+                    console.log('good1');
                     break;
-                    case 'familial':
+                    case 'rooms[1].nom':
                         let square2 = document.createElement('div');
                         square2.setAttribute('style', 'width: 10px; height: 10px;')
                         square2.style.backgroundColor = 'magenta';
-            
+                        console.log('good2');
+                        
                         divSquare.prepend(square2);
                         break;
-                        case 'appartement':
+                        case 'rooms[2].nom':
                             let square3 = document.createElement('div');
                             square3.setAttribute('style', 'width: 10px; height: 10px;')
                             square3.style.backgroundColor = 'darkred';
-                
+                            
                             divSquare.prepend(square3);
+                            console.log('good2');
                     break;
                 default:
                     break;

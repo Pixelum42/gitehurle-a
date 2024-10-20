@@ -1,7 +1,7 @@
 const rooms = [
     {
         id : 0,
-        nom: "La Sérénité du Mont",
+        nom: "Chambre double - La Sérénité du Mont",
         description: "Évadez-vous dans notre chambre \"La Sérénité du Mont\" et laissez-vous séduire par le charme authentique des Cévennes. Nichée au cœur d'une nature préservée, cette chambre vous offre un cocon douillet pour vous ressourcer en toute intimité. Imaginez la sensation paisible de vous laisser bercer par le chant mélodieux des oiseaux, surplombant la sublime panorama du Mont Lozère.",
         images: [
             "https://i.ibb.co/x7gngrJ/duobedroom.jpg",
@@ -16,7 +16,7 @@ const rooms = [
     },
     {
         id : 1,
-        nom: "L'Abri des Aigles",
+        nom: "Chambre familiale - L'Abri des Aigles",
         description: "Évadez-vous dans notre cocon douillet \"L'Abri des Aigles\". Nichée au cœur des Cévennes, cette chambre vous offre un espace généreux et chaleureux pour vous ressourcer en famille. Avec son lit double moelleux, son lit superposé ludique et son lit simple, elle est idéale pour des nuits paisibles. Après une journée de découvertes, détendez-vous dans votre chambre et profitez de la vue sur les montagnes. Vous vous sentirez comme chez vous !",
         images: [
             "https://i.ibb.co/kMCcmJj/familybedroom.jpg",
@@ -31,7 +31,7 @@ const rooms = [
     },
     {
         id : 2,
-        nom: "Les Horizons Sauvages",
+        nom: "Appartement - Les Horizons Sauvages",
         description: "Vous aspirez à un peu d'indépendance et d'espace pour votre famille ? L'appartement \"Les Horizons Sauvages\" est fait pour vous ! Avec la capacité d'accueillir jusqu'à 10 personnes grâce à ses deux lits doubles, ses deux lits superposés et ses deux lits simples, vous pourrez également profiter d'une cuisine bien pensée pour partager des instants conviviaux dans un décor exceptionnel.",
         images: [
             "https://i.ibb.co/m6N8LBw/appartbedroom.jpg",

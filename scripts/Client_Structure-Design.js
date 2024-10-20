@@ -135,9 +135,9 @@ const makeNav = () => {
 
     formLink0.addEventListener("mouseenter", () => { formLink0.style.color = rootColors["--primary"]; });
     formLink0.addEventListener("mouseleave", () => { formLink0.style.color = rootColors["--text"]; });
-    // formLink0.addEventListener("click", () => {
-    //     makeFormBook();
-    // });
+    formLink0.addEventListener("click", () => {
+        makeFormBook();
+    });
     formLink0.innerText = "Réserver";
     formItem0.appendChild(formLink0);
 

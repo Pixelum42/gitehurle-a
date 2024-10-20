@@ -152,15 +152,15 @@ function makeFormBook(room) {
     divSpace.appendChild(selectSpace);
 
     let optionSpace0 = document.createElement("option");
-    optionSpace0.innerText = "Chambre double - La Sérénité du Mont";
+    optionSpace0.innerText = rooms[0].nom;
     selectSpace.appendChild(optionSpace0);
 
     let optionSpace1 = document.createElement("option");
-    optionSpace1.innerText = "Chambre familiale - L'Abri des Aigles";
+    optionSpace1.innerText = rooms[1].nom;
     selectSpace.appendChild(optionSpace1);
 
     let optionSpace2 = document.createElement("option");
-    optionSpace2.innerText = "Appartement - Les Horizons Sauvages";
+    optionSpace2.innerText = rooms[2].nom;
     selectSpace.appendChild(optionSpace2);
 
     // Div for Formula :
@@ -1004,7 +1004,7 @@ function makeFormBook(room) {
 
     formReserve.addEventListener("submit", function (event) {
 
-        reservations.push(inputLastName.value, inputFirstName.value, inputMail.value, inputPhone.value, selectSpace.value, inputStart.value, inputEnd.value, selectFormula.value, pPrices.innerHTML);
+        reservations.push(reservation(inputLastName.value, inputFirstName.value, inputMail.value, inputPhone.value, selectSpace.value, inputStart.value, inputEnd.value, selectFormula.value, pPrices.innerHTML));
 
         message = "Espace disponible";
         statut = "Réservation en attente de validation";
@@ -1024,6 +1024,6 @@ function makeFormBook(room) {
 
 }
 
-const rooms = [0, 1, 2];
-makeFormBook(rooms[2]);
-// makeFormBook(rooms[0]);
+// const rooms = [0, 1, 2];
+// makeFormBook(rooms[2]);
+// // makeFormBook(rooms[0]);
