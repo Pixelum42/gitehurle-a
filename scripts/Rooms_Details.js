@@ -1,7 +1,5 @@
-const main = document.getElementById('main-id');
-
-// Fonction pour afficher les détails d'une chambre avec le carousel centré à gauche
 function displayRoomDetails(room) {
+    const main = document.getElementById('main-id');
     main.innerHTML = '';
 
     const chambreDiv = document.createElement('div');
@@ -32,9 +30,9 @@ function displayRoomDetails(room) {
     prevArrow.textContent = '<';
     prevArrow.style.position = 'absolute';
     prevArrow.style.top = '50%';
-    prevArrow.style.left = '1em';
+    prevArrow.style.left = '0.5em';
     prevArrow.style.transform = 'translateY(-50%)';
-    prevArrow.style.fontSize = '2em';
+    prevArrow.style.fontSize = '3em';
     prevArrow.style.fontWeight = "bold";
     prevArrow.style.background = 'none';
     prevArrow.style.border = 'none';
@@ -46,9 +44,9 @@ function displayRoomDetails(room) {
     nextArrow.textContent = '>';
     nextArrow.style.position = 'absolute';
     nextArrow.style.top = '50%';
-    nextArrow.style.right = '1em';
+    nextArrow.style.right = '0.5em';
     nextArrow.style.transform = 'translateY(-50%)';
-    nextArrow.style.fontSize = '2em';
+    nextArrow.style.fontSize = '3em';
     nextArrow.style.fontWeight = "bold";
     nextArrow.style.background = 'none';
     nextArrow.style.border = 'none';
@@ -61,26 +59,33 @@ function displayRoomDetails(room) {
         currentImageIndex = (currentImageIndex - 1 + room.images.length) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
     });
-
     nextArrow.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex + 1) % room.images.length;
         carouselImage.src = room.images[currentImageIndex];
     });
+    
+    setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % room.images.length;
+        carouselImage.src = room.images[currentImageIndex];
+    }, 2000);
+
 
     chambreDiv.appendChild(carouselDiv);
 
 
     const detailsDiv = document.createElement('div');
-    // Prend tout l'espace disponible
     detailsDiv.style.flex = '1';
 
     const titre = document.createElement('h2');
     titre.textContent = room.nom;
+    titre.style.color = rootColors["--accent"];
     detailsDiv.appendChild(titre);
 
     const description = document.createElement('p');
     description.style.fontSize = '1em';
     description.textContent = room.description;
+    description.style.fontWeight = "400";
+    description.style.color = rootColors["--text"];
     detailsDiv.appendChild(description);
 
     const infoSection = document.createElement('div');
@@ -88,8 +93,10 @@ function displayRoomDetails(room) {
     infoSection.style.display = 'block';
     
     const info = document.createElement('p');
-    info.style.fontSize = '1em';
     info.textContent = `Prix: ${room.prix} € / Nuit`;
+    info.style.fontSize = '1em';
+    info.style.fontWeight = "400";
+    info.style.color = rootColors["--primary"];
     infoSection.appendChild(info);
 
     const descriptionSup = document.createElement('p');
@@ -117,6 +124,8 @@ function displayRoomDetails(room) {
             default:
                 formuleInfo.textContent = `Formule : ${formule}`;
         }
+        formuleInfo.style.fontWeight = "400";
+        formuleInfo.style.color = rootColors["--text"];
         formulesDiv.appendChild(formuleInfo);
     });
 

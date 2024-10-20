@@ -1,6 +1,6 @@
 const adminLog = {
-    "username": "admin",
-    "password": "admin"
+    "username": "beweb",
+    "password": "2024"
 };
 
 const makeNav = () => {
@@ -21,9 +21,9 @@ const makeNav = () => {
     brand.className = "navbar-brand active";
     brand.setAttribute("aria-current", "page");
     brand.href = "#";
-    // roomLink0.addEventListener("click", () => {
-    // ! generateClient_Accueil(); ##############################################################################
-    // });
+    brand.addEventListener("click", () => {
+        generateClient_Accueil();
+    });
     brand.style.color = rootColors["--text"];
     brand.innerText = "Le Gîte Hurle";
     brandDiv.appendChild(brand);
@@ -369,6 +369,7 @@ function defineElementColors() {
 const generateStructure = () => {
     makeNav();
     makeHeader();
+    generateClient_Accueil();
     makeFooter();
 
     defineElementColors();
