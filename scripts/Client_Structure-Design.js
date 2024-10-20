@@ -5,6 +5,7 @@ const adminLog = {
 
 const makeNav = () => {
     const navbar = document.getElementById("nav-id");
+    navbar.innerHTML='';
     navbar.className = "navbar navbar-expand navbar-light fixed-top";
     navbar.style.backgroundColor = rootColors["--A-secondary"];
 
@@ -124,6 +125,7 @@ const makeNav = () => {
 const makeHeader = () => {
     const header = document.getElementById("header-id");
     header.className = "py-5";
+    header.innerHTML='';
     header.style.background = "url('https://www.gites-de-france.com/sites/default/files/styles/facebook_1200x630/public/ispagnac-lozere.jpeg') bottom";
     header.style.backgroundSize = "cover";
     header.style.backgroundRepeat = "no-repeat";
@@ -246,6 +248,7 @@ function generateConnexion() {
       //generateAdminNav();
       //generateAdminResa();
       gestionResaGeneration();
+      generateStructureAdmin();
     }
     else{
       alert('Mauvais Utilisateur / Mot de Passe');      
@@ -254,6 +257,7 @@ function generateConnexion() {
 
 const makeFooter = () => {
     const footer = document.getElementById("footer-id");
+    footer.innerHTML='';
     footer.className = "container";
 
     const footerDiv = document.createElement("div");
